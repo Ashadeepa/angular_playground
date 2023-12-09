@@ -1,6 +1,6 @@
 # Angular17 Examples
 
-ngPune Meetup Dec'23 Presentation [click here](https://docs.google.com/presentation/d/1H7L8gvlK-UtBCSJCdd09XQtGuxRzTdrn/edit?usp=drive_link&ouid=116976942510812652087&rtpof=true&sd=true)
+ngPune Meetup Dec'23 Presentation [click here](https://docs.google.com/presentation/d/1H7L8gvlK-UtBCSJCdd09XQtGuxRzTdrn/edit?usp=drive_link&ouid=116976942510812652087&rtpof=true&sd=true).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
