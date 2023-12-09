@@ -1,7 +1,5 @@
 # Angular17 Examples
 
-ngPune Meetup Dec'23 Presentation [click here](https://docs.google.com/presentation/d/1drNFuRFSAA3VHbwoVJB7UswiBl0XyHQ3/edit?usp=drive_link&ouid=116976942510812652087&rtpof=true&sd=true).
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
 ## Development server
@@ -27,6 +25,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
 
 [def]: https://docs.google.com/presentation/d/1H7L8gvlK-UtBCSJCdd09XQtGuxRzTdrn/edit?usp=drive_link&ouid=116976942510812652087&rtpof=true&sd=true
