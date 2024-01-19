@@ -12,14 +12,5 @@ import { EmployeeService } from './design-patterns/facade/employee.service';
   styles: ``,
 })
 export class AppComponent {
-/*  constructor (private empSvc : EmployeeService, 
-    private deptSvc: DepartmentService ) {
-      this.empSvc.getEmployees().subscribe((empl) => {
-        console.log(empl);
-      });
 
-      this.deptSvc.getDepartments().subscribe((dept) => {
-        console.log(dept);
-      });
-  }*/
 }
