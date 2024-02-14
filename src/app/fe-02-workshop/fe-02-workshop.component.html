@@ -1,0 +1,8 @@
+<div class="flex-container">
+  @for (duck of this.ducks;track duck.file) {
+    <app-duck-card [duck]="duck" class="flex-item"></app-duck-card>
+  }
+</div>
+<div style="padding: 50px; max-width: 1024px">
+  <app-newsletter-signup></app-newsletter-signup>
+</div>

@@ -1,0 +1,16 @@
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{this.duck?.name}}</mat-card-title>
+    <mat-card-subtitle>Rate the duck</mat-card-subtitle>
+  </mat-card-header>
+  <div style="width: 100%; display: flex; justify-content: center">
+    <img mat-card-image [src]="duck!.file" alt="Photo of a Shiba Inu" class="duckImage" width="300" height="300">
+  </div>
+
+  <mat-card-content>
+    <p>
+      {{this.duck?.randomDuckFact}}
+    </p>
+  </mat-card-content>
+</mat-card>
