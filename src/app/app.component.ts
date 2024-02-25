@@ -12,8 +12,9 @@ import { EmployeeService } from './design-patterns/facade/employee.service';
     <div class="angular-playground-text"> Angular Playground</div>
     <nav>
       <ul>
-        <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
-        <li><a routerLink="/deferred-loading" routerLinkActive="active" ariaCurrentWhenActive="page">Deferred loading</a></li>
+        <li><a routerLink="/" routerLinkActive="class2" ariaCurrentWhenActive="page">Home Page</a></li>
+        <li><a routerLink="/control-flows">New Control Flows</a></li>
+        <li><a routerLink="/deferred-loading">Deferred Views</a></li>
       </ul>
     </nav>
     <router-outlet></router-outlet>`,
