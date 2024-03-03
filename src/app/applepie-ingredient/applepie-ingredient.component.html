@@ -1,0 +1,6 @@
+<ul>
+  <!--- New Control Flow @for-->
+  @for (ingredient of ingredients; track ingredient.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
+    <li><strong>{{ingredient.name}}</strong> <i> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</i></li>
+  }
+</ul>

@@ -1,5 +1,5 @@
 import {Component, signal} from '@angular/core';
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 type ItemType = {
   readonly id: number;
   readonly name: string;
@@ -10,7 +10,8 @@ type CollectionType = ReadonlyArray<ItemType>;
   selector: 'app-control-flow',
   standalone: true,
   imports: [
-    NgIf
+    NgIf,
+    NgForOf
   ],
   templateUrl: './control-flow.component.html',
   styleUrl: './control-flow.component.scss'
@@ -26,4 +27,5 @@ export class ControlFlowComponent {
   emptyCollection: CollectionType = [];
 
   radioValue = signal(1);
+
 }

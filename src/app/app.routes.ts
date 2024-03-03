@@ -2,9 +2,14 @@ import { Routes } from '@angular/router';
 import { ParentComponent } from './deferred-loading/parent.component';
 import { SingletonTestComponent } from './design-patterns/singleton-test/singleton-test.component';
 import { FacadeTestComponent } from './design-patterns/facade-test/facade-test.component';
-import {ControlFlowComponent} from "./control-flows/control-flow/control-flow.component";
+import {ControlFlowComponent} from "./control-flows/control-flow.component";
+import {AppleRecipeComponent} from "./applepie-recipe/apple-recipe.component";
 
 export const routes: Routes = [
+  {
+    path: 'apple-pie-recipe',
+    loadComponent: () => AppleRecipeComponent,
+  },
   {
     path: 'control-flows',
     loadComponent: () => ControlFlowComponent,
@@ -14,11 +19,11 @@ export const routes: Routes = [
     loadComponent: () => ParentComponent,
   },
   {
-    path: 'singleton',
-    loadComponent: () => SingletonTestComponent,
-  },
-  {
     path: 'facade',
     loadComponent: () => FacadeTestComponent,
+  },
+  {
+    path: 'singleton',
+    loadComponent: () => SingletonTestComponent
   }
 ];

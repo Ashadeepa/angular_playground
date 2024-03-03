@@ -1,0 +1,24 @@
+.chart {
+  display: flex;
+  align-items: flex-end;
+  width: 400px;
+  margin: 0 auto;
+}
+.chart-bar {
+  width: 50px;
+  margin-right: 10px;
+  background-color: #ddd;
+  height: 0;
+}
+.yes {
+  background-color: #ff69b4;
+}
+.no {
+  background-color: #007bff;
+}
+.label {
+  text-align: center;
+}
+.label-no {
+  margin-left: 10%;
+}
