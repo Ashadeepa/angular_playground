@@ -3,7 +3,7 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 55%; // TODO Asha Check on big screen
+ // margin-top: 55%; // TODO Asha Check on big screen
 }
 
 h2 {
@@ -55,6 +55,10 @@ li {
     margin-top: 15px;
   }
 }
+.pieName {
+  margin-bottom: 0;
+  margin-top: 0;
+}
 
 /* CSS */
 .button-62 {
@@ -65,8 +69,8 @@ li {
   cursor: pointer;
   display: inline-block;
   font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 500;
+ // font-size: 16px;
+  //font-weight: 500;
   line-height: 2.5;
   outline: transparent;
   padding: 0 1rem;
@@ -86,24 +90,4 @@ li {
 .button-62:not([disabled]):hover {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }
-CSS
-.loading {
-  width: 100px;
-  height: 20px;
-  background-color: #f3f3f3;
-  overflow: hidden;
-}
 
-.loading::before {
-  content: "";
-  display: block;
-  width: 50%;
-  height: 100%;
-  background-color: #3498db;
-  animation: bar-loading 2s ease-in-out infinite;
-}
-
-@keyframes bar-loading {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(100%); }
-}

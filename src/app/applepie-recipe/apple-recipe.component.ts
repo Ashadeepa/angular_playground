@@ -2,9 +2,6 @@ import {Component, signal} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {SurveyRecipeComponent} from "../applepie-survey-recipe/survey-recipe.component";
 import {ApplepieIngredientComponent} from "../applepie-ingredient/applepie-ingredient.component";
-import {ChildComponent} from "../deferred-loading/child.component";
-import {of} from "rxjs";
-
 @Component({
   selector: 'app-apple-recipe.component',
   standalone: true,
@@ -20,8 +17,6 @@ export class AppleRecipeComponent {
 
   pieName = 'Apple Pie';
   pieImageUrl = '../../assets/apple-pie.jpg';
-  ashieImageUrl = '../../assets/ashieverse.jpg';
-  ashieName = 'Ashie Verse Painting';
   isClicked = signal(false);
   isCheckedSurveyInput = signal(true);
   instructions =

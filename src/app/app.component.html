@@ -2,12 +2,14 @@
   <nav>
     <ul>
       <li><a routerLink="/">Home Page</a></li>
-      <li><a routerLink="/control-flows" routerLinkActive="class2"> Control Flows</a></li>
-      <li><a routerLink="/deferred-loading" routerLinkActive="class2">Deferred Views</a></li>
+      <li><a routerLink="/ashieverse-art" routerLinkActive="class2">Art</a></li>
+      <li><a routerLink="/apple-pie-recipe" routerLinkActive="class2">Receipe</a></li>
+      <!--<li><a routerLink="/control-flows" routerLinkActive="class2"> Control Flows</a></li>
+      <li><a routerLink="/deferred-loading" routerLinkActive="class2">Deferred Views</a></li>-->
     </ul>
   </nav>
-
   <router-outlet></router-outlet>
+  <img *ngIf="isRouterLinkEqualTo('/')" src="assets/techfest.jpg" alt="" class="tech-fest">
 </div>
 
 

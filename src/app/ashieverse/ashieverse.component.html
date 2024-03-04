@@ -1,0 +1,14 @@
+<div class="ashie-verse">
+  <h2>{{ ashieName }}</h2>
+  <div>
+    @defer (on timer(3s)) {
+      <img src="{{ ashieImageUrl }}" alt="{{ ashieName }} " class="ashie-image">
+    } @placeholder {
+      <h2 class='placeholder'>Waiting.....</h2>
+    } @loading (minimum 3s) {
+      <h2 class='loading'>Loading...</h2>
+    } @error {
+      <h2 class='error'>Error..</h2>
+    }
+  </div>
+</div>
