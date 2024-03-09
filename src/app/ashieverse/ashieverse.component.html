@@ -4,38 +4,46 @@
     <div class="flex-item">
       <img alt="{{ ashieName }}" class="ashie-image" src="{{ ashieImageUrl }}">
     </div>
+
     <div class="flex-item">
-      <input [(ngModel)]="isCompleted" type="checkbox" />
+      <input [(ngModel)]="isCompleted" type="checkbox"/>
       Check when you spot the 🔥 in the canvas painting!
+      <br>
       <div *ngIf="isCompleted; else notCompleted">
         <p>Congratulations! You spotted it right!</p>
-        <br> New control flow &commat;if directive
         <pre>
         <code>
           &commat;if (isCompleted) &#123;
             &lt;p&gt;Congratulations! You spotted it right!&lt;/p&gt;
            &#125;
            &commat;else &#123;
-             &lt;p&gt;New control flow &commat;if directive&lt;/p&gt;
+             &lt;p&gt;Ouch! You missed it!&lt;/p&gt;
            &#125;
         </code>
       </pre>
-      </div>
+     </div>
       <ng-template #notCompleted>
-        <p>Traditional *ngIf directive</p>
+        <p>Ouch! You missed it!</p>
         <pre>
         <code>
           &lt;div *ngIf="isCompleted"&gt;
             &lt;p&gt;Congratulations! You spotted it right!&lt;/p&gt;
           &lt;/div&gt;
           &lt;div *ngIf="!isCompleted"&gt;
-            &lt;p&gt;Traditional *ngIf directive&lt;/p&gt;
+            &lt;p&gt;Ouch! You missed it!&lt;/p&gt;
           &lt;/div&gt;
         </code>
         </pre>
       </ng-template>
     </div>
     <div>
+      <!--
+            @if (isCompleted) {
+              <p>Congratulations! You spotted it right!</p>
+            }
+            @else {
+              <p>Ouch! You missed it!</p>
+            }-->
     </div>
   </div>
 </div>
