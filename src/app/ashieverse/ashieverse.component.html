@@ -1,15 +1,41 @@
 <div class="ashie-verse">
   <h2>{{ ashieName }}</h2>
-  <div>
-    @defer (on timer(3s)) {
-      <img src="{{ ashieImageUrl }}" alt="{{ ashieName }}" class="ashie-image">
-    } @placeholder {
-      <h2 class='placeholder'>Waiting.....</h2>
-    } @loading (minimum 3s) {
-      <h2 class='loading'>Loading...</h2>
-      <div class="loader"></div>
-    } @error {
-      <h2 class='error'>Error..</h2>
-    }
+  <div class="flex-container">
+    <div class="flex-item">
+      <img alt="{{ ashieName }}" class="ashie-image" src="{{ ashieImageUrl }}">
+    </div>
+    <div class="flex-item">
+      <input [(ngModel)]="isCompleted" type="checkbox" />
+      Check when you spot the 🔥 in the canvas painting!
+      <div *ngIf="isCompleted; else notCompleted">
+        <p>Congratulations! You spotted it right!</p>
+        <br> New control flow &commat;if directive
+        <pre>
+        <code>
+          &commat;if (isCompleted) &#123;
+            &lt;p&gt;Congratulations! You spotted it right!&lt;/p&gt;
+           &#125;
+           &commat;else &#123;
+             &lt;p&gt;New control flow &commat;if directive&lt;/p&gt;
+           &#125;
+        </code>
+      </pre>
+      </div>
+      <ng-template #notCompleted>
+        <p>Traditional *ngIf directive</p>
+        <pre>
+        <code>
+          &lt;div *ngIf="isCompleted"&gt;
+            &lt;p&gt;Congratulations! You spotted it right!&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div *ngIf="!isCompleted"&gt;
+            &lt;p&gt;Traditional *ngIf directive&lt;/p&gt;
+          &lt;/div&gt;
+        </code>
+        </pre>
+      </ng-template>
+    </div>
+    <div>
+    </div>
   </div>
 </div>

@@ -29,18 +29,7 @@
   <!--- Old Control Flow *ngFor
   <li *ngFor="let ingredient of ingredients">{{ ingredient.name }}</li>
   -->
-  <input #checkbox type="checkbox" [checked]="isCheckedSurveyInput()"
-         (change)="isCheckedSurveyInput.set(checkbox.checked)" id="checkbox"/>
-  <span> Did you make this Pie? </span>
-  <!--- Old Control Flow *ngIf
-    <span *ngIf="isCheckedSurveyInput()">Yes</span>
-    <span *ngIf="!isCheckedSurveyInput()">No</span>-->
-  <!--- New Control Flow ngIf-->
-  @if (isCheckedSurveyInput()) {
-    <span><strong>Yes</strong></span>
-  } @else {
-    <span><strong>No</strong></span>
-  }
+
   <!--- Angular17 @Defer & New Control Flow Example 3-->
   <hr>
   <div>
@@ -53,7 +42,8 @@
         <h4>Placeholder - Click here to show survey results!</h4
         ></span>
     } @loading (minimum 5s) {
-      <span class='loading'><h4>Loading...</h4></span>
+      <h4 class='loading'>Loading...</h4>
+      <div class="loader"></div>
     } @error {
       <span class='error'><h4>Error..</h4></span>
     }

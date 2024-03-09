@@ -18,7 +18,6 @@ export class AppleRecipeComponent {
   pieName = 'Apple Pie';
   pieImageUrl = '../../assets/apple-pie.jpg';
   isClicked = signal(false);
-  isCheckedSurveyInput = signal(true);
   instructions =
     [
       {id: 1, name: 'Peel and slice the apples.' },
