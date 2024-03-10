@@ -4,31 +4,33 @@
   <img src="{{ pieImageUrl }}" alt="{{ pieName }}" class="pie-image">
 
   <!--- Angular17 @Defer & New Control Flow Example 1-->
-  <h3>Ingredients:</h3>
-  @defer (on hover) {
+  <h3>Ingredients</h3>
+  @defer (on timer(5s)) {
     <app-applepie-ingredient></app-applepie-ingredient>
   }
   @placeholder {
-    <span><i>Placeholder (hover it!)</i></span>
+    <span><i>Placeholder (should display in 10s)</i></span>
   }
 
   <!--- Angular17 @Defer & New Control Flow Example 2-->
-  <h3>Instructions:</h3>
-  @defer (on timer(10s)) {
+  <h3>Instructions</h3>
+  @defer (on hover) {
+    <ol>
     @for (step of instructions; track step.id) {
       <li>{{ step.name }}</li>
     }
+    </ol>
   }  @placeholder {
-    <span><i>Placeholder (should display in 10s)</i></span>
+    <span><i>Placeholder (hover it!)</i></span>
   }
 
   <p class="note">Note: {{ recipeNote }}</p>
 
-  <h3>Survey:</h3>
+  <button id="likeButton">👍 Like</button>
+  <button id="subscribeButton">🔔 Subscribe</button>
+  <h3>Popularity Survey</h3>
   <hr>
-
   <!--- Angular17 @Defer & New Control Flow Example 3-->
-  <hr>
   <div>
     <br>
     <button class="button-62" role="button" (click)="isClicked.set(true)">Results</button>

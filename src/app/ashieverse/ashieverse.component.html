@@ -3,21 +3,10 @@
   <div class="flex-container">
     <div class="flex-item">
       <img alt="{{ ashieName }}" class="ashie-image" src="{{ ashieImageUrl }}">
+      <p>📌 Follow me on : <a href="https://in.pinterest.com/ashie1709/ashieverse-creations/my-work/" target="_blank">Pinterest</a></p>
     </div>
 
     <div class="flex-item">
-
-      <h3>&#64;for</h3>
-
-      <ul>
-        @for (item of canvasCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
-          <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>
-        }
-        @empty {
-          <span>Task list is empty</span>
-        }
-      </ul>
-
 
       <h3>&#64;if</h3>
 
@@ -58,6 +47,17 @@
         </code>
         </pre>
       </ng-template>
+<!--
+      <h3>&#64;for</h3>
+
+      <ul>
+        @for (item of canvasCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
+          <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>
+        }
+        @empty {
+          <span>Task list is empty</span>
+        }
+      </ul>
 
 
       <h3>&#64;switch</h3>
@@ -73,7 +73,22 @@
           <span>Good</span>
         }
       }
-
+      <pre>
+        <code>
+          &commat;switch (radioValue()) &#123;
+            &commat;case (1) &#123;
+              &lt;span&gt;Exceptional&lt;/span&gt;
+            &#125;
+            &commat;case (2) &#123;
+              &lt;span&gt;Excellent&lt;/span&gt;
+            &#125;
+            &commat;default &#123;
+              &lt;span&gt;Good&lt;/span&gt;
+            &#125;
+          &#125;
+        </code>
+      </pre>
+-->
    </div>
  </div>
 </div>

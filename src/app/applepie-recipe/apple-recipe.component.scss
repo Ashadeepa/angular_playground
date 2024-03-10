@@ -112,3 +112,45 @@ li {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Like button style */
+#likeButton {
+  background-color: #3498db;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 15px;
+  font-size:10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Subscribe button style */
+#subscribeButton {
+  background-color: #e74c3c;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #2c3e50;
+  color: #fff; /* Change text color on hover */
+}
+
+ol {
+  font-size: 16px;
+  margin-left: 20px;
+}
+
