@@ -3,7 +3,12 @@ import {ApplepieIngredientComponent} from "../applepie-ingredient/applepie-ingre
 import {SurveyRecipeComponent} from "../applepie-survey-recipe/survey-recipe.component";
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
+type ItemType = {
+  readonly id: number;
+  readonly name: string;
+};
 
+type CollectionType = ReadonlyArray<ItemType>;
 @Component({
   selector: 'app-ashieverse',
   standalone: true,
@@ -18,10 +23,14 @@ import {NgIf} from "@angular/common";
 })
 export class AshieverseComponent {
   ashieImageUrl = '../../assets/ashieverse.jpg';
-  ashieName = 'Ashieverse Art';
-  isApple: boolean = false;
-  toggleFruit() {
-    this.isApple = !this.isApple;
-  }
+  ashieName = 'Ashieverse Art - Angular17 New Control Flows';
   isCompleted: any;
+  canvasCollection: CollectionType = [
+    { id: 1, name: 'Keep It Simple'},
+    { id: 2, name: 'Butterfly Effect'},
+    { id: 3, name: 'Sunset'},
+    { id: 4, name: 'LightHouse'}
+  ];
+  emptyCollection: CollectionType = [];
+  radioValue = signal(2);
 }

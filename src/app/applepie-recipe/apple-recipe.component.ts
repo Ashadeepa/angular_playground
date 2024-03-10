@@ -15,7 +15,7 @@ import {ApplepieIngredientComponent} from "../applepie-ingredient/applepie-ingre
 })
 export class AppleRecipeComponent {
 
-  pieName = 'Apple Pie';
+  pieName = 'Apple Pie Recipe - Angular17 Deferrable Views';
   pieImageUrl = '../../assets/apple-pie.jpg';
   isClicked = signal(false);
   instructions =

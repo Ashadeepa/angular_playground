@@ -6,9 +6,32 @@
     </div>
 
     <div class="flex-item">
+
+      <h3>&#64;for</h3>
+
+      <ul>
+        @for (item of canvasCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
+          <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>
+        }
+        @empty {
+          <span>Task list is empty</span>
+        }
+      </ul>
+
+
+      <h3>&#64;if</h3>
+
       <input [(ngModel)]="isCompleted" type="checkbox"/>
       Check when you spot the 🔥 in the canvas painting!
       <br>
+          <!--
+            @if (isCompleted) {
+              <p>Congratulations! You spotted it right!</p>
+            }
+            @else {
+              <p>Ouch! You missed it!</p>
+           }-->
+
       <div *ngIf="isCompleted; else notCompleted">
         <p>Congratulations! You spotted it right!</p>
         <pre>
@@ -35,15 +58,22 @@
         </code>
         </pre>
       </ng-template>
-    </div>
-    <div>
-      <!--
-            @if (isCompleted) {
-              <p>Congratulations! You spotted it right!</p>
-            }
-            @else {
-              <p>Ouch! You missed it!</p>
-            }-->
-    </div>
-  </div>
+
+
+      <h3>&#64;switch</h3>
+
+      @switch (radioValue()) {
+        @case (1) {
+          <span>Exceptional</span>
+        }
+        @case (2) {
+          <span>Excellent</span>
+        }
+        @default {
+          <span>Good</span>
+        }
+      }
+
+   </div>
+ </div>
 </div>
