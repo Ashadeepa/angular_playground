@@ -1,0 +1,1809 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "User",
+            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
+            "file": "src/stories/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "DepartmentService",
+            "id": "injectable-DepartmentService-3aa56650d33e928db77b0292c5f1158317eebb77696fc62035a6c94246dbe632db20c982aa608656e6f3e079a35c7b1a7fd808af837230fc2d37469cf3e6f33c",
+            "file": "src/app/design-patterns/facade/department.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getDepartments",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { of } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class DepartmentService {\r\n\r\n  constructor() { }\r\n\r\n  getDepartments() {\r\n    return of ( [\r\n      {\r\n        id: \"D1\",\r\n        name: \"Sales\"\r\n      },\r\n      {\r\n        id: \"D2\",\r\n        name: \"R&D\"    \r\n      },\r\n      {\r\n        id: \"D3\",\r\n        name: \"Marketing\"      \r\n      }\r\n    ] )\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 7
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "EmployeeService",
+            "id": "injectable-EmployeeService-bf74ddddd3cd03c8a4a87e9bbbe2d3700bc661c929ea84c516c473eae19886ed8da629160966305d4579e89ad8316a2e33f1daa75ba309b2a47216d6ecb0c842",
+            "file": "src/app/design-patterns/facade/employee.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getEmployees",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { of } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class EmployeeService {\r\n\r\n  constructor() { }\r\n  getEmployees() {\r\n    return of ( [\r\n      {\r\n        id: \"123\",\r\n        name: \"John Doe\",\r\n        email: \"john.doe@abc.com\"\r\n      },\r\n      {\r\n        id: \"234\",\r\n        name: \"Jane Doe\",\r\n        email: \"jane.doe@abc.com\"        \r\n      },\r\n      {\r\n        id: \"345\",\r\n        name: \"Richard Smith\",\r\n        email: \"richard.smith@abc.com\"        \r\n      }\r\n    ] );\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 7
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "FacadeService",
+            "id": "injectable-FacadeService-e7fb394e76f2279cd23487b75fe7aa0c154954e582b3c60d2f47408aa10ac55777e5b3465d8919b7a11fac2ddaff8622c34a15842ffd07e8586addf20c564542",
+            "file": "src/app/design-patterns/facade/facade.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getDeptAndEmpl",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { EmployeeService } from './employee.service';\r\nimport { DepartmentService } from './department.service';\r\nimport { forkJoin } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class FacadeService {\r\n\r\n  constructor(\r\n    private empSvc : EmployeeService, \r\n    private deptSvc: DepartmentService) {    \r\n  }\r\n\r\n  getDeptAndEmpl() {\r\n    return forkJoin ([\r\n      this.empSvc.getEmployees(),\r\n      this.deptSvc.getDepartments()\r\n    ]);\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "empSvc",
+                        "type": "EmployeeService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "deptSvc",
+                        "type": "DepartmentService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "empSvc",
+                        "type": "EmployeeService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "deptSvc",
+                        "type": "DepartmentService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "SingletonService",
+            "id": "injectable-SingletonService-5451ffcac0a33bd670324ced6b6328d2be0f78bf675a332deaa0bc18b1166a47da164341288380d27254b8f45d563603e8585d680f357aabc04b43e19107036e",
+            "file": "src/app/design-patterns/singletonservice/singleton.service.ts",
+            "properties": [
+                {
+                    "name": "refCount",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        126
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getMessage",
+                    "args": [
+                        {
+                            "name": "msg",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "msg",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { refCount } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class SingletonService {\r\n\r\n  public static refCount = 0;\r\n\r\n  constructor() {\r\n    SingletonService.refCount += 1;\r\n    console.log(\"Number of instances: \", SingletonService.refCount);\r\n   }\r\n\r\n   getMessage(msg: string) {\r\n    return \"Message from \" + msg;\r\n   }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 9
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-9bc5815a54566626055dd1523e412c2b83ab71052678e1f4a58362321e9bcba7cd1e5b0ae056b846265666b8d817ac78bd409bc902f6fb4c205392dcc8ebe1d1",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "isRouterLinkEqualTo",
+                    "args": [
+                        {
+                            "name": "route",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "route",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "RouterLink"
+                },
+                {
+                    "name": "RouterLinkActive"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport {ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';\r\nimport { DepartmentService } from './design-patterns/facade/department.service';\r\nimport { EmployeeService } from './design-patterns/facade/employee.service';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss',\r\n})\r\nexport class AppComponent {\r\n  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }\r\n  isRouterLinkEqualTo(route: string): boolean {\r\n    // @ts-ignore\r\n    const currentRoute = this.activatedRoute.snapshot['_routerState'].url;\r\n    return currentRoute === route;\r\n  }\r\n}\r\n",
+            "styleUrl": "./app.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"container abc\">\r\n  <nav>\r\n    <ul>\r\n      <li><a routerLink=\"/\">Home Page</a></li>\r\n      <li><a routerLink=\"/ashieverse-art\" routerLinkActive=\"class2\">Art</a></li>\r\n      <li><a routerLink=\"/apple-pie-recipe\" routerLinkActive=\"class2\">Receipe</a></li>\r\n      <!--<li><a routerLink=\"/control-flows\" routerLinkActive=\"class2\"> Control Flows</a></li>\r\n      <li><a routerLink=\"/deferred-loading\" routerLinkActive=\"class2\">Deferred Views</a></li>-->\r\n    </ul>\r\n  </nav>\r\n  <router-outlet></router-outlet>\r\n  <img *ngIf=\"isRouterLinkEqualTo('/')\" src=\"assets/techfest.jpg\" alt=\"\" class=\"tech-fest\">\r\n</div>\r\n\r\n\r\n"
+        },
+        {
+            "name": "ApplepieIngredientComponent",
+            "id": "component-ApplepieIngredientComponent-3a832acce787b505521f17ef453981fbfc740c85fd668d809e5099bb9d07d25f335740575c24d50a221b723008745e978731de2a71ee4c29ab8f54cd0f94a532",
+            "file": "src/app/applepie-ingredient/applepie-ingredient.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-applepie-ingredient",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./applepie-ingredient.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "ingredients",
+                    "defaultValue": "[\n    {id: 1, name: '4-5 apples' },\n    {id: 2, name: '1 cup sugar' },\n    {id: 3, name: '1 tsp cinnamon'},\n    {id: 4, name: '1 pie crust'},\n    // ...More ingredients\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgForOf"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport {NgForOf} from \"@angular/common\";\n\n@Component({\n  selector: 'app-applepie-ingredient',\n  standalone: true,\n  imports: [\n    NgForOf\n  ],\n  templateUrl: './applepie-ingredient.component.html',\n  styleUrl: './applepie-ingredient.component.scss'\n})\nexport class ApplepieIngredientComponent {\n  ingredients = [\n    {id: 1, name: '4-5 apples' },\n    {id: 2, name: '1 cup sugar' },\n    {id: 3, name: '1 tsp cinnamon'},\n    {id: 4, name: '1 pie crust'},\n    // ...More ingredients\n  ]\n}\n",
+            "styleUrl": "./applepie-ingredient.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<ul>\n  <!--- New Control Flow @for-->\n  @for (ingredient of ingredients; track ingredient.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {\n    <li>{{ingredient.name}}</li>\n  }\n</ul>\n"
+        },
+        {
+            "name": "AppleRecipeComponent",
+            "id": "component-AppleRecipeComponent-616fb6e4e14f6ef7daa729dd7cbdf6e8b9f41d93ea352210aaa1bcf907fe00be8a373eee2ca96b527ab0084b346cd173ebcdf6e9961931e318c305e427034df4",
+            "file": "src/app/applepie-recipe/apple-recipe.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-apple-recipe.component",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./apple-recipe-component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "instructions",
+                    "defaultValue": "[\n      {id: 1, name: 'Peel and slice the apples.' },\n      {id: 2, name: 'Mix apples with sugar and cinnamon.' },\n      {id: 3, name: 'Place the mixture in the pie crust.'},\n      {id: 4, name: 'Bake at 375°F for 45 minutes.'},\n      // ...More steps\n    ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "isClicked",
+                    "defaultValue": "signal(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "pieImageUrl",
+                    "defaultValue": "'../../assets/apple-pie.jpg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "pieName",
+                    "defaultValue": "'Apple Pie Recipe - Angular17 Deferrable Views'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "recipeNote",
+                    "defaultValue": "'Feel free to add a scoop of vanilla ice cream on top!'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgForOf"
+                },
+                {
+                    "name": "SurveyRecipeComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ApplepieIngredientComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, signal} from '@angular/core';\nimport {NgForOf} from \"@angular/common\";\nimport {SurveyRecipeComponent} from \"../applepie-survey-recipe/survey-recipe.component\";\nimport {ApplepieIngredientComponent} from \"../applepie-ingredient/applepie-ingredient.component\";\n@Component({\n  selector: 'app-apple-recipe.component',\n  standalone: true,\n  imports: [\n    NgForOf,\n    SurveyRecipeComponent,\n    ApplepieIngredientComponent\n  ],\n  templateUrl: './apple-recipe-component.html',\n  styleUrl: './apple-recipe.component.scss'\n})\nexport class AppleRecipeComponent {\n\n  pieName = 'Apple Pie Recipe - Angular17 Deferrable Views';\n  pieImageUrl = '../../assets/apple-pie.jpg';\n  isClicked = signal(false);\n  instructions =\n    [\n      {id: 1, name: 'Peel and slice the apples.' },\n      {id: 2, name: 'Mix apples with sugar and cinnamon.' },\n      {id: 3, name: 'Place the mixture in the pie crust.'},\n      {id: 4, name: 'Bake at 375°F for 45 minutes.'},\n      // ...More steps\n    ]\n  recipeNote = 'Feel free to add a scoop of vanilla ice cream on top!';\n}\n",
+            "styleUrl": "./apple-recipe.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"pie-recipe\">\n  <h2 class=\"pieName\">{{ pieName }}</h2>\n  <br>\n  <img src=\"{{ pieImageUrl }}\" alt=\"{{ pieName }}\" class=\"pie-image\">\n\n  <!--- Angular17 @Defer & New Control Flow Example 1-->\n  <h3>Ingredients</h3>\n  @defer (on timer(5s)) {\n    <app-applepie-ingredient></app-applepie-ingredient>\n  }\n  @placeholder {\n    <span><i>Placeholder (should display in 10s)</i></span>\n  }\n\n  <!--- Angular17 @Defer & New Control Flow Example 2-->\n  <h3>Instructions</h3>\n  @defer (on hover) {\n    <ol>\n    @for (step of instructions; track step.id) {\n      <li>{{ step.name }}</li>\n    }\n    </ol>\n  }  @placeholder {\n    <span><i>Placeholder (hover it!)</i></span>\n  }\n\n  <p class=\"note\">Note: {{ recipeNote }}</p>\n\n  <button id=\"likeButton\">👍 Like</button>\n  <button id=\"subscribeButton\">🔔 Subscribe</button>\n  <h3>Popularity Survey</h3>\n  <hr>\n  <!--- Angular17 @Defer & New Control Flow Example 3-->\n  <div>\n    <br>\n    <button class=\"button-62\" role=\"button\" (click)=\"isClicked.set(true)\">Results</button>\n    @defer (when isClicked()) {\n      <app-survey-recipe></app-survey-recipe>\n    } @placeholder {\n      <span class='placeholder'>\n        <h4>Placeholder - Click here to show survey results!</h4>\n      </span>\n    } @loading (minimum 5s) {\n      <h4 class='loading'>Loading...</h4>\n      <div class=\"loader\"></div>\n    } @error {\n      <span class='error'><h4>Error..</h4></span>\n    }\n  </div>\n</div>\n"
+        },
+        {
+            "name": "AshieverseComponent",
+            "id": "component-AshieverseComponent-c096388f4898264957ff6f3552e3503eef8a0f630cb8c29694b4aab8600804cec35db8a0dd848bd595fc754a7d8288d5d7cb168a8f9813d8036d4d29af696c84",
+            "file": "src/app/ashieverse/ashieverse.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-ashieverse",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./ashieverse.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "ashieImageUrl",
+                    "defaultValue": "'../../assets/ashieverse.jpg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "ashieName",
+                    "defaultValue": "'Ashieverse Art - Angular17 New Control Flows'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "canvasCollection",
+                    "defaultValue": "[\n    { id: 1, name: 'Keep It Simple'},\n    { id: 2, name: 'Butterfly Effect'},\n    { id: 3, name: 'Sunset'},\n    { id: 4, name: 'LightHouse'}\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CollectionType",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "emptyCollection",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CollectionType",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "isCompleted",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "radioValue",
+                    "defaultValue": "signal(2)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ApplepieIngredientComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "SurveyRecipeComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NgIf"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, signal} from '@angular/core';\nimport {ApplepieIngredientComponent} from \"../applepie-ingredient/applepie-ingredient.component\";\nimport {SurveyRecipeComponent} from \"../applepie-survey-recipe/survey-recipe.component\";\nimport {FormsModule} from \"@angular/forms\";\nimport {NgIf} from \"@angular/common\";\ntype ItemType = {\n  readonly id: number;\n  readonly name: string;\n};\n\ntype CollectionType = ReadonlyArray<ItemType>;\n@Component({\n  selector: 'app-ashieverse',\n  standalone: true,\n  imports: [\n    ApplepieIngredientComponent,\n    SurveyRecipeComponent,\n    FormsModule,\n    NgIf\n  ],\n  templateUrl: './ashieverse.component.html',\n  styleUrl: './ashieverse.component.scss'\n})\nexport class AshieverseComponent {\n  ashieImageUrl = '../../assets/ashieverse.jpg';\n  ashieName = 'Ashieverse Art - Angular17 New Control Flows';\n  isCompleted: any;\n  canvasCollection: CollectionType = [\n    { id: 1, name: 'Keep It Simple'},\n    { id: 2, name: 'Butterfly Effect'},\n    { id: 3, name: 'Sunset'},\n    { id: 4, name: 'LightHouse'}\n  ];\n  emptyCollection: CollectionType = [];\n  radioValue = signal(2);\n}\n",
+            "styleUrl": "./ashieverse.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"ashie-verse\">\n  <h2>{{ ashieName }}</h2>\n  <div class=\"flex-container\">\n    <div class=\"flex-item\">\n      <img alt=\"{{ ashieName }}\" class=\"ashie-image\" src=\"{{ ashieImageUrl }}\">\n      <p>📌 Follow me on : <a href=\"https://in.pinterest.com/ashie1709/ashieverse-creations/my-work/\" target=\"_blank\">Pinterest</a></p>\n    </div>\n\n    <div class=\"flex-item\">\n\n      <h3>&#64;if</h3>\n\n      <input [(ngModel)]=\"isCompleted\" type=\"checkbox\"/>\n      Check when you spot the 🔥 in the canvas painting in 2 sec!\n      <br>\n          <!--\n            @if (isCompleted) {\n              <p>Congratulations! You spotted it right!</p>\n            }\n            @else {\n              <p>Ouch! You missed it!</p>\n           }-->\n\n      <div *ngIf=\"isCompleted; else notCompleted\">\n        <p>Congratulations! You spotted it right!</p>\n        <pre>\n        <code>\n          &commat;if (isCompleted) &#123;\n            &lt;p&gt;Congratulations! You spotted it right!&lt;/p&gt;\n           &#125;\n           &commat;else &#123;\n             &lt;p&gt;Ouch! You missed it!&lt;/p&gt;\n           &#125;\n        </code>\n      </pre>\n     </div>\n      <ng-template #notCompleted>\n        <p>Ouch! You missed it!</p>\n        <pre>\n        <code>\n          &lt;div *ngIf=\"isCompleted\"&gt;\n            &lt;p&gt;Congratulations! You spotted it right!&lt;/p&gt;\n          &lt;/div&gt;\n          &lt;div *ngIf=\"!isCompleted\"&gt;\n            &lt;p&gt;Ouch! You missed it!&lt;/p&gt;\n          &lt;/div&gt;\n        </code>\n        </pre>\n      </ng-template>\n<!--\n      <h3>&#64;for</h3>\n\n      <ul>\n        @for (item of canvasCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {\n          <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>\n        }\n        @empty {\n          <span>Task list is empty</span>\n        }\n      </ul>\n\n\n      <h3>&#64;switch</h3>\n\n      @switch (radioValue()) {\n        @case (1) {\n          <span>Exceptional</span>\n        }\n        @case (2) {\n          <span>Excellent</span>\n        }\n        @default {\n          <span>Good</span>\n        }\n      }\n      <pre>\n        <code>\n          &commat;switch (radioValue()) &#123;\n            &commat;case (1) &#123;\n              &lt;span&gt;Exceptional&lt;/span&gt;\n            &#125;\n            &commat;case (2) &#123;\n              &lt;span&gt;Excellent&lt;/span&gt;\n            &#125;\n            &commat;default &#123;\n              &lt;span&gt;Good&lt;/span&gt;\n            &#125;\n          &#125;\n        </code>\n      </pre>\n-->\n   </div>\n </div>\n</div>\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-86e2311c54fbca7431c12e070d0fd5b0ebe343eec0553a392f182ba0e04a8f86613233d26ee47718fd0e7a65078f580c76a1fcc928ce55de81193d6618025bc4",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nWhat background color to use\n",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 798,
+                            "end": 811,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 799,
+                                "end": 807,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "required"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "rawdescription": "\n\nButton contents\n\n",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 43,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIs this the principal call to action on the page?\n",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 23,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHow large should the button be?\n",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 35,
+                    "type": "\"small\" | \"medium\" | \"large\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nOptional click handler\n",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 49,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 51
+                    }
+                }
+            }
+        },
+        {
+            "name": "ChildComponent",
+            "id": "component-ChildComponent-52fcd1355408f0a709aa69530b7543bc6307d88ed1103db2ec0f3e797d08f5b60bf0a4e2f0aa51f0b2f5e6592e9aa40e4941eea7236c91b251c06d7e75e363bb",
+            "file": "src/app/deferred-loading/child.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-child",
+            "styleUrls": [],
+            "styles": [
+                ""
+            ],
+            "template": "\n<h4 style=\"color: green\">\n  This is child component!\n</h4>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-child',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  template: `\r\n\r\n    <h4 style=\"color: green\">\r\n      This is child component!\r\n    </h4>\r\n  `,\r\n  styles: ``\r\n})\r\nexport class ChildComponent {\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n",
+            "extends": []
+        },
+        {
+            "name": "ControlFlowComponent",
+            "id": "component-ControlFlowComponent-7cf09bbbc411c7b4e8826d5c6e2920f46bd862569dd256bcc7f23d362679cbbed0af63911f172051956b8b83fa11f21eba36cb9f1e7b5b66e808b77ab5b7a79a",
+            "file": "src/app/control-flows/control-flow.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-control-flow",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./control-flow.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "collection",
+                    "defaultValue": "[\n    { id: 1, name: 'Item 1' },\n    { id: 2, name: 'Item 2' },\n    { id: 3, name: 'Item 3' }\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CollectionType",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "emptyCollection",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CollectionType",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "isChecked",
+                    "defaultValue": "signal(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "radioValue",
+                    "defaultValue": "signal(1)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "NgForOf"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, signal} from '@angular/core';\nimport {NgForOf, NgIf} from \"@angular/common\";\ntype ItemType = {\n  readonly id: number;\n  readonly name: string;\n};\n\ntype CollectionType = ReadonlyArray<ItemType>;\n@Component({\n  selector: 'app-control-flow',\n  standalone: true,\n  imports: [\n    NgIf,\n    NgForOf\n  ],\n  templateUrl: './control-flow.component.html',\n  styleUrl: './control-flow.component.scss'\n})\nexport class ControlFlowComponent {\n  isChecked = signal(true);\n\n  collection: CollectionType = [\n    { id: 1, name: 'Item 1' },\n    { id: 2, name: 'Item 2' },\n    { id: 3, name: 'Item 3' }\n  ];\n  emptyCollection: CollectionType = [];\n\n  radioValue = signal(1);\n\n}\n",
+            "styleUrl": "./control-flow.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div style=\" background-color: lightgrey;\r\n  border: 5px solid #57beea;\r\n  padding: 20px;\r\n  margin: 10px;\r\n  float: left;\r\n  width: 500px;\r\n  overflow: auto;\">\r\n<h3>&#64;if and &#64;else</h3>\r\n<div>\r\n  <input #checkbox type=\"checkbox\" [checked]=\"isChecked()\" (change)=\"isChecked.set(checkbox.checked)\" id=\"checkbox\"/>\r\n</div>\r\n<div>\r\n  @if (isChecked()) {\r\n    <span>Checked</span>\r\n  }\r\n  @else {\r\n    <span>Not checked</span>\r\n  }\r\n</div>\r\n\r\n<h3>&#64;switch and &#64;case</h3>\r\n<div>\r\n  <div>\r\n    <input type=\"radio\" [checked]=\"radioValue() === 1\" (change)=\"radioValue.set(1)\" id=\"radio1\"/>\r\n    <label for=\"radio1\">1</label>\r\n  </div>\r\n  <div>\r\n    <input type=\"radio\" [checked]=\"radioValue() === 2\" (change)=\"radioValue.set(2)\" id=\"radio2\"/>\r\n    <label for=\"radio2\">2</label>\r\n  </div>\r\n  <div>\r\n    <input type=\"radio\" [checked]=\"radioValue() === 3\" (change)=\"radioValue.set(3)\" id=\"radio3\"/>\r\n    <label for=\"radio3\">3</label>\r\n  </div>\r\n  <div>\r\n    <input type=\"radio\" [checked]=\"radioValue() === 4\" (change)=\"radioValue.set(4)\" id=\"radio4\"/>\r\n    <label for=\"radio4\">4</label>\r\n  </div>\r\n</div>\r\n<div>\r\n  @switch (radioValue()) {\r\n    @case (1) {\r\n      <span>Case 1</span>\r\n    }\r\n    @case (2) {\r\n      <span>Case 2</span>\r\n    }\r\n    @default {\r\n      <span>Default case (Not 1 or 2)</span>\r\n    }\r\n  }\r\n</div>\r\n\r\n<h3>&#64;for</h3>\r\n<ul>\r\n  @for (item of collection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {\r\n    <li><strong>{{item.name}}</strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>\r\n  }\r\n</ul>\r\n\r\n<h3>&#64;empty</h3>\r\n<ul>\r\n  @for (item of emptyCollection; track item.id;) {\r\n    <li><strong>{{item.name}}</strong></li>\r\n  }\r\n  @empty {\r\n    <span>The collection is empty</span>\r\n  }\r\n</ul>\r\n</div>\r\n"
+        },
+        {
+            "name": "FacadeTestComponent",
+            "id": "component-FacadeTestComponent-10f211db7450831e2b9e9e17e53900f2f420da5d310a60ce0df4aa9c4da267ff25ec0db07b9fcd50a325153c8d3a4d1908225e495dfcc88b0d7abca1510542d6",
+            "file": "src/app/design-patterns/facade-test/facade-test.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-facade-test",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./facade-test.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "departments",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "employees",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FacadeService } from '../facade/facade.service';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-facade-test',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './facade-test.component.html',\r\n  styleUrl: './facade-test.component.scss'\r\n})\r\nexport class FacadeTestComponent {\r\n  employees :  any = [];\r\n  departments: any = [];\r\n  /*  constructor (private empSvc : EmployeeService, \r\n    private deptSvc: DepartmentService ) {\r\n      this.empSvc.getEmployees().subscribe((empl) => {\r\n        console.log(empl);\r\n      });\r\n\r\n      this.deptSvc.getDepartments().subscribe((dept) => {\r\n        console.log(dept);\r\n      });\r\n  }*/\r\n  constructor(private facadeSvc : FacadeService) {\r\n    this.facadeSvc\r\n      .getDeptAndEmpl()\r\n      .subscribe(([empl, dept]:any) => {\r\n        this.employees = empl;\r\n        this.departments = dept;\r\n        console.log(\"Employees: \", empl);\r\n        console.log(\"Departments: \", dept);\r\n    })\r\n  }\r\n\r\n}\r\n",
+            "styleUrl": "./facade-test.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "facadeSvc",
+                        "type": "FacadeService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "facadeSvc",
+                        "type": "FacadeService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<h3> &#9734; Employees &#9734; </h3>\r\n<div *ngFor=\"let i of employees\" >\r\n<p>{{i.id}}           {{i.name}}            {{i.email}}</p>\r\n</div>\r\n<h3> &#9734; Departments &#9734; </h3>\r\n<div *ngFor=\"let j of departments\" >\r\n    <p>{{j.id}}           {{j.name}}  </p>\r\n</div>\r\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-cad94b233ec8e80ceb541e7972c5f9737e08237b4e137112f3987ca48ee0cce5c0d57798d41daa5d4d24d6bdbb2df1606ab68cca2aa0a1785e38f99f3cac0729",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "User | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 78,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 72,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-header {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-d32b0f19628254ea3fc5526c4d4564ada1cc83cf936759006d90a46f5874b02a3359e331bddda20b22e74a616a6443c660602ba74dd38ebe1160759e0de6f7ba",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 69
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "doCreateAccount",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogin",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "HeaderComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-page {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\n.storybook-page h2 {\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\n.storybook-page ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.storybook-page .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "ParentComponent",
+            "id": "component-ParentComponent-635578f59f6dfd8bfe97e833ef0bd26056b3e765493f41e24777128d1efff1e2b4fa1de58859e934d1cab4ebb5eddeeae3aa9061787d1aafb7adf5e3713d4172",
+            "file": "src/app/deferred-loading/parent.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-parent",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./parent.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isClicked",
+                    "defaultValue": "signal(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Parent Component'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ChildComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, signal } from '@angular/core';\r\nimport { ChildComponent } from './child.component';\r\n\r\n@Component({\r\n  selector: 'app-parent',\r\n  standalone: true,\r\n  imports: [CommonModule, ChildComponent],\r\n  templateUrl: './parent.component.html',\r\n  styleUrl: './parent.component.scss'\r\n})\r\nexport class ParentComponent {\r\n  isClicked = signal(false);\r\n  title = 'Parent Component'\r\n}\r\n",
+            "styleUrl": "./parent.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div style=\" background-color: lightgrey;\r\n  border: 5px solid rebeccapurple;\r\n  padding: 20px;\r\n  margin: 10px;\r\n  float: left;\r\n  width: 500px;\r\n  overflow: auto;\">\r\n\r\n  <h2 style=\"color: darkblue\"> This is {{ title }} </h2>\r\n\r\n  <h3> &#9733; Defer on button click &#9733; </h3>\r\n  <div>\r\n    <button (click)=\"isClicked.set(true)\">Click on me to load <strong>app-child</strong> component</button>\r\n  </div>\r\n\r\n  @defer (when isClicked()) {\r\n    <app-child/>\r\n  } @placeholder {\r\n    <span class='placeholder'>Placeholder</span>\r\n  } @error {\r\n    <span class='error'>Error</span>\r\n  } @loading (minimum 1s) {\r\n    <span class='loading'>Loading...</span>\r\n  }\r\n  <hr>\r\n\r\n  <h3> &#9734; Defer on hover &#9734; </h3>\r\n\r\n  @defer (on hover) {\r\n    <span class='done'>Hovered</span>\r\n  } @placeholder {\r\n    <span class='placeholder'>Hover me!</span>\r\n  }\r\n  <hr>\r\n\r\n  <h3> &#9733; Defer on interaction &#9733; </h3>\r\n\r\n  @defer (on interaction) {\r\n    <span class='done'>Clicked</span>\r\n  } @placeholder {\r\n    <span class='placeholder'>Click me!</span>\r\n  }\r\n  <hr>\r\n\r\n  <h3> &#9734; Defer on timer (10s) &#9734; </h3>\r\n\r\n  @defer (on timer(10s)) {\r\n    <span class='done'>I am visible after 10s</span>\r\n  } @placeholder {\r\n    <span class='placeholder'>Placeholder</span>\r\n  }\r\n  <hr>\r\n\r\n  <h3>&#9733; Prefetch &#9733;</h3>\r\n  @defer (on interaction; prefetch on hover) {\r\n    <app-child/>\r\n  } @placeholder {\r\n    <span>Placeholder (hover it, then click on it!)</span>\r\n  }\r\n  <hr>\r\n</div>\r\n"
+        },
+        {
+            "name": "SingletonChild1Component",
+            "id": "component-SingletonChild1Component-45ac492f2c27a5b6250f2792f3e9f9f4effc10143b7b3d784c2e97b0d1cd092feadd6a4de692f0ef03ce4944d45a7de98df7ff7488b21f71760497dfe8dbf3c3",
+            "file": "src/app/design-patterns/singleton-child1/singleton-child1.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-singleton-child1",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./singleton-child1.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "message",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { SingletonService } from '../singletonservice/singleton.service';\r\n\r\n@Component({\r\n  selector: 'app-singleton-child1',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './singleton-child1.component.html',\r\n  styleUrl: './singleton-child1.component.scss'\r\n})\r\nexport class SingletonChild1Component {\r\n  \r\n  message: string = \"\";\r\n\r\n  constructor(private singletonSvc : SingletonService) {}\r\n\r\n  ngOnInit() {\r\n    this.message = this.singletonSvc.getMessage(\"Singleton child #1111 \");\r\n  }\r\n\r\n}\r\n",
+            "styleUrl": "./singleton-child1.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "singletonSvc",
+                        "type": "SingletonService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "singletonSvc",
+                        "type": "SingletonService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<p>{{message}}</p>\r\n"
+        },
+        {
+            "name": "SingletonChild2Component",
+            "id": "component-SingletonChild2Component-f69743f85b7d2e05ac682b8cb8db9d1e1b88aba8d08210d57e5f22187f51f7e975ce8c0c4a08d05b82c3d2634f3b3d2612d53d057d525a25d682f7ef8e61d916",
+            "file": "src/app/design-patterns/singleton-child2/singleton-child2.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-singleton-child2",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./singleton-child2.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "message",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { SingletonService } from '../singletonservice/singleton.service';\r\n\r\n@Component({\r\n  selector: 'app-singleton-child2',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './singleton-child2.component.html',\r\n  styleUrl: './singleton-child2.component.scss'\r\n})\r\nexport class SingletonChild2Component {\r\n  message: string = \"\";\r\n\r\n  constructor(private singletonSvc : SingletonService) {}\r\n\r\n  ngOnInit() {\r\n    this.message = this.singletonSvc.getMessage(\"Singleton child #2222 \");\r\n  }\r\n}\r\n",
+            "styleUrl": "./singleton-child2.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "singletonSvc",
+                        "type": "SingletonService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "singletonSvc",
+                        "type": "SingletonService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<p>{{message}}</p>\r\n"
+        },
+        {
+            "name": "SingletonTestComponent",
+            "id": "component-SingletonTestComponent-739787aabc0da351b0a794044706ebc47bf9ab0fe666ddb4f3c449f255618f32dee40881c0e6db6ea673c4599e2dfea063dd252eaedb99bbffedd5eb4b923bd4",
+            "file": "src/app/design-patterns/singleton-test/singleton-test.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-singleton-test",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./singleton-test.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "SingletonChild1Component",
+                    "type": "component"
+                },
+                {
+                    "name": "SingletonChild2Component",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { SingletonChild1Component } from '../singleton-child1/singleton-child1.component';\r\nimport { SingletonChild2Component } from '../singleton-child2/singleton-child2.component';\r\n\r\n@Component({\r\n  selector: 'app-singleton-test',\r\n  standalone: true,\r\n  imports: [SingletonChild1Component, SingletonChild2Component],\r\n  templateUrl: './singleton-test.component.html',\r\n  styleUrl: './singleton-test.component.scss'\r\n})\r\nexport class SingletonTestComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./singleton-test.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-singleton-child1></app-singleton-child1>\r\n<app-singleton-child2></app-singleton-child2>\r\n"
+        },
+        {
+            "name": "SurveyRecipeComponent",
+            "id": "component-SurveyRecipeComponent-8975dc4af00a8a0bd1f6eeafe2ed8716079d1dc26a561b6c58e684d3564a58cba3c870c50c381ef4a11ec7d40a4fd4c586fa51e4a040761fd505ac068bcc860f",
+            "file": "src/app/applepie-survey-recipe/survey-recipe.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-survey-recipe",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./survey-recipe.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgIf"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component} from '@angular/core';\nimport {NgIf} from \"@angular/common\";\n\n@Component({\n  selector: 'app-survey-recipe',\n  standalone: true,\n  imports: [NgIf],\n  templateUrl: './survey-recipe.component.html',\n  styleUrl: './survey-recipe.component.scss'\n})\nexport class SurveyRecipeComponent {\n\n}\n",
+            "styleUrl": "./survey-recipe.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<br>\n<h1>Survey Results</h1>\n<div class=\"chart\">\n  <div class=\"chart-bar like\" style=\"height: 200px;\"></div>\n  <div class=\"chart-bar subscribe\" style=\"height: 150px;\"></div>\n</div>\n<div class=\"chart\">\n  <div class=\"label\">Like</div>\n  <div class=\"label-sub\">Subscribe</div>\n</div>\n"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\n  providers: [provideRouter(routes)]\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "CollectionType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "ReadonlyArray<ItemType>",
+                "file": "src/app/ashieverse/ashieverse.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "CollectionType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "ReadonlyArray<ItemType>",
+                "file": "src/app/control-flows/control-flow.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "ItemType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/ashieverse/ashieverse.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "ItemType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/control-flows/control-flow.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\n  providers: [provideRouter(routes)]\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/app/ashieverse/ashieverse.component.ts": [
+                {
+                    "name": "CollectionType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "ReadonlyArray<ItemType>",
+                    "file": "src/app/ashieverse/ashieverse.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                },
+                {
+                    "name": "ItemType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/ashieverse/ashieverse.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ],
+            "src/app/control-flows/control-flow.component.ts": [
+                {
+                    "name": "CollectionType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "ReadonlyArray<ItemType>",
+                    "file": "src/app/control-flows/control-flow.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                },
+                {
+                    "name": "ItemType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/control-flows/control-flow.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 3,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/applepie-ingredient/applepie-ingredient.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ApplepieIngredientComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/applepie-recipe/apple-recipe.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppleRecipeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/applepie-survey-recipe/survey-recipe.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SurveyRecipeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ashieverse/ashieverse.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AshieverseComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/control-flows/control-flow.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ControlFlowComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/deferred-loading/child.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChildComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/deferred-loading/parent.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ParentComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/design-patterns/facade-test/facade-test.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FacadeTestComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/design-patterns/facade/department.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "DepartmentService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/design-patterns/facade/employee.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "EmployeeService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/design-patterns/facade/facade.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "FacadeService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/design-patterns/singleton-child1/singleton-child1.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SingletonChild1Component",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/design-patterns/singleton-child2/singleton-child2.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SingletonChild2Component",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/design-patterns/singleton-test/singleton-test.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SingletonTestComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/design-patterns/singletonservice/singleton.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "SingletonService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            }
+        ]
+    }
+}
