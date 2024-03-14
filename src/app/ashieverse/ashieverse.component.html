@@ -22,6 +22,7 @@
            }-->
 
       <div *ngIf="isCompleted; else notCompleted">
+        <br>
         <span>Congratulations! You spotted it right!</span>
         <pre>
         <code>
@@ -50,16 +51,14 @@
       </ng-template>
 
       <h3>&#64;for</h3>
-
-      <pre><code>
+      <div class="for">
         @for (item of canvasCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
           <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>
         }
         @empty {
           <span>Task list is empty</span>
         }
-      </code></pre>
-
+      </div>
       <h3>&#64;switch</h3>
       Common Elements in most of the paintings:
       @switch (radioValue()) {
