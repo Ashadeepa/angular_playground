@@ -53,7 +53,7 @@
       <h3>&#64;for</h3>
       Let's go over my collection together and see if you can spot the common elements in most of the paintings
       <div class="for">
-        @for (item of canvasCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
+        @for (item of emptyCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
           <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>
         }
         @empty {
