@@ -51,6 +51,7 @@
       </ng-template>
 
       <h3>&#64;for</h3>
+      Let's go over my collection together and see if you can spot the common elements in most of the paintings
       <div class="for">
         @for (item of canvasCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
           <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>
@@ -63,7 +64,7 @@
       Common Elements in most of the paintings:
       @switch (radioValue()) {
         @case (1) {
-          <span>Butterfly</span>
+          <span>Birds</span>
         }
         @case (2) {
           <span>LightHouse</span>
@@ -76,7 +77,7 @@
         <code>
           &commat;switch (radioValue()) &#123;
             &commat;case (1) &#123;
-              &lt;span&gt;Butterfly&lt;/span&gt;
+              &lt;span&gt;Birds&lt;/span&gt;
             &#125;
             &commat;case (2) &#123;
               &lt;span&gt;LightHouse&lt;/span&gt;
