@@ -22,20 +22,21 @@
            }-->
 
       <div *ngIf="isCompleted; else notCompleted">
-        <p>Congratulations! You spotted it right!</p>
+        <span>Congratulations! You spotted it right!</span>
         <pre>
         <code>
           &commat;if (isCompleted) &#123;
-            &lt;p&gt;Congratulations! You spotted it right!&lt;/p&gt;
+            &lt;span>&gt;Congratulations! You spotted it right!&lt;/span&gt;
            &#125;
            &commat;else &#123;
-             &lt;p&gt;Ouch! You missed it!&lt;/p&gt;
+             &lt;span&gt;Ouch! You missed it!&lt;/span&gt;
            &#125;
         </code>
       </pre>
      </div>
       <ng-template #notCompleted>
-        <p>Ouch! You missed it!</p>
+        <br>
+        <span>Ouch! You missed it!</span>
         <pre>
         <code>
           &lt;div *ngIf="isCompleted"&gt;
@@ -50,45 +51,43 @@
 
       <h3>&#64;for</h3>
 
-      <ul>
+      <pre><code>
         @for (item of canvasCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
           <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>
         }
         @empty {
           <span>Task list is empty</span>
         }
-      </ul>
-
+      </code></pre>
 
       <h3>&#64;switch</h3>
-
+      Common Elements in most of the paintings:
       @switch (radioValue()) {
         @case (1) {
-          <span>Exceptional</span>
+          <span>Butterfly</span>
         }
         @case (2) {
-          <span>Excellent</span>
+          <span>LightHouse</span>
         }
         @default {
-          <span>Good</span>
+          <span>Moon</span>
         }
       }
       <pre>
         <code>
           &commat;switch (radioValue()) &#123;
             &commat;case (1) &#123;
-              &lt;span&gt;Exceptional&lt;/span&gt;
+              &lt;span&gt;Butterfly&lt;/span&gt;
             &#125;
             &commat;case (2) &#123;
-              &lt;span&gt;Excellent&lt;/span&gt;
+              &lt;span&gt;LightHouse&lt;/span&gt;
             &#125;
             &commat;default &#123;
-              &lt;span&gt;Good&lt;/span&gt;
+              &lt;span&gt;Moon&lt;/span&gt;
             &#125;
           &#125;
         </code>
       </pre>
-
    </div>
  </div>
 </div>
