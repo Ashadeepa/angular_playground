@@ -32,5 +32,5 @@ export class AshieverseComponent {
     { id: 4, name: 'LightHouse'}
   ];
   emptyCollection: CollectionType = [];
-  radioValue = signal(2);
+  radioValue = signal(1);
 }
