@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Angular Form: After Accessibility Improvements</h5>
+    </div>
+    
+    <div class="card-body">
+        <form (submit)="submitForm()">
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="firstName">First name</label>
+                    <input type="text" id="firstName" name="firstName" class="form-control" 
+                        placeholder="Enter your first name" required ngModel #firstNameRef="ngModel" 
+                        aria-describedby="firstNameError"> 
+                    <div id="firstNameError" *ngIf="firstNameRef?.invalid && (firstNameRef?.dirty || firstNameRef?.touched)" role="alert">
+                        <div class="text-danger" *ngIf="firstNameRef?.errors?.['required']">
+                            First name is required.
+                        </div>
+                    </div>                  
+                </div>
+
+                <div class="col-sm-12 mt-3 form-group">
+                    <label for="lastName">Last name</label>
+                    <input type="text" id="lastName" name="lastName" class="form-control" 
+                        placeholder="Enter your last name" required ngModel #lastNameRef="ngModel" 
+                        aria-describedby="lastNameError">
+                    <div id="lastNameError" *ngIf="lastNameRef?.invalid && (lastNameRef?.dirty || lastNameRef?.touched)" role="alert">
+                        <div class="text-danger" *ngIf="lastNameRef?.errors?.['required']">
+                            Last name is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 mt-3 form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" 
+                        placeholder="Enter your email" required ngModel #emailRef="ngModel" 
+                        aria-describedby="emailError" email>
+                    <div id="emailError" *ngIf="emailRef?.errors" role="alert">
+                        <div class="text-danger" *ngIf="(emailRef?.dirty || emailRef?.touched) && emailRef?.errors?.['required']">
+                            Email is required.
+                        </div>
+                        <div class="text-danger" *ngIf="emailRef?.errors?.['email']">
+                            Please enter a valid email address.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 mt-3 text-center">
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
