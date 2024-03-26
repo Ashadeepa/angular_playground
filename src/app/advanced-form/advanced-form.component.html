@@ -6,7 +6,7 @@
     <div class="card-body">
         <form (submit)="submitForm()">
             <div class="row">
-                <div class="col-sm-12 form-group">
+                <div class="col-sm-6 form-group">
                     <label for="firstName">First name</label>
                     <input type="text" id="firstName" name="firstName" class="form-control" 
                         placeholder="Enter your first name" required ngModel #firstNameRef="ngModel" 
@@ -18,7 +18,7 @@
                     </div>                  
                 </div>
 
-                <div class="col-sm-12 mt-3 form-group">
+                <div class="col-sm-6 form-group">
                     <label for="lastName">Last name</label>
                     <input type="text" id="lastName" name="lastName" class="form-control" 
                         placeholder="Enter your last name" required ngModel #lastNameRef="ngModel" 
@@ -29,8 +29,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-sm-12 mt-3 form-group">
+            <div class="row mt-3">
+                <div class="col-sm-6 form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" class="form-control" 
                         placeholder="Enter your email" required ngModel #emailRef="ngModel" 
@@ -44,10 +46,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-12 mt-3 text-center">
-                <button type="button" class="btn btn-primary">Submit</button>
+                <div class="col-sm-6 form-group" style="margin-top: 1.3rem;">
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </form>
     </div>
