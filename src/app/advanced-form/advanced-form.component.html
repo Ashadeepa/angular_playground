@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title">Angular Form: After Accessibility Improvements</h5>
+        <div class="card-title">Angular Form: After Accessibility Improvements</div>
     </div>
     
     <div class="card-body">
@@ -36,7 +36,7 @@
                     <label for="email">Email</label>
                     <input type="email" name="email" class="form-control" 
                         placeholder="Enter your email" required ngModel #emailRef="ngModel" 
-                        aria-describedby="emailError" email>
+                        email>
                     <div id="emailError" *ngIf="emailRef?.errors" role="alert">
                         <div class="text-danger" *ngIf="(emailRef?.dirty || emailRef?.touched) && emailRef?.errors?.['required']">
                             Email is required.

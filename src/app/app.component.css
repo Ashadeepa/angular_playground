@@ -33,6 +33,12 @@
     align-items: center;
   }
 
+  .header {
+    color: darkmagenta;
+    font-style: italic;
+    font-family: cursive;
+  }
+
  
 
   
