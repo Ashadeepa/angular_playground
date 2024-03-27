@@ -5,5 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './dropdown.component.html'
 })
 export class DropdownComponent {
-  
+  showAlert() {
+    alert('Hello, this is an alert!');
+  }
 }
