@@ -5,6 +5,7 @@ import { FacadeTestComponent } from './design-patterns/facade-test/facade-test.c
 import {ControlFlowComponent} from "./control-flows/control-flow.component";
 import {AppleRecipeComponent} from "./applepie-recipe/apple-recipe.component";
 import {AshieverseComponent} from "./ashieverse/ashieverse.component";
+import { IteratorComponent } from './design-patterns/behavioural-design-pattern/iterator-pattern/iterator.component';
 
 export const routes: Routes = [
   {
@@ -30,5 +31,9 @@ export const routes: Routes = [
   {
     path: 'singleton',
     loadComponent: () => SingletonTestComponent
+  },
+  {
+    path: 'iterator',
+    loadComponent: () => IteratorComponent
   }
 ];
