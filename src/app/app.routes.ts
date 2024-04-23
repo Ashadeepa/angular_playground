@@ -6,6 +6,7 @@ import {ControlFlowComponent} from "./control-flows/control-flow.component";
 import {AppleRecipeComponent} from "./applepie-recipe/apple-recipe.component";
 import {AshieverseComponent} from "./ashieverse/ashieverse.component";
 import { IteratorComponent } from './design-patterns/behavioural-design-pattern/iterator-pattern/iterator.component';
+import { StateComponent } from './design-patterns/behavioural-design-pattern/state-pattern/state.component';
 
 export const routes: Routes = [
   {
@@ -35,5 +36,9 @@ export const routes: Routes = [
   {
     path: 'iterator',
     loadComponent: () => IteratorComponent
-  }
+  },
+  {
+    path: 'state',
+    loadComponent: () => StateComponent
+  }  
 ];
