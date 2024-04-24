@@ -7,6 +7,8 @@ import {AppleRecipeComponent} from "./applepie-recipe/apple-recipe.component";
 import {AshieverseComponent} from "./ashieverse/ashieverse.component";
 import {PresentationComponent} from "./design-patterns/prototype/presentation.component";
 import {LoggingComponent} from "./design-patterns/decorator/logging.component";
+import { IteratorComponent } from './design-patterns/behavioural-design-pattern/iterator-pattern/iterator.component';
+import { StateComponent } from './design-patterns/behavioural-design-pattern/state-pattern/state.component';
 
 export const routes: Routes = [
   {
@@ -41,4 +43,11 @@ export const routes: Routes = [
     path: 'logging',
     loadComponent: () => LoggingComponent
   }
+    path: 'iterator',
+    loadComponent: () => IteratorComponent
+  },
+  {
+    path: 'state',
+    loadComponent: () => StateComponent
+  }  
 ];
