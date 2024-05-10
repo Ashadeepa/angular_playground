@@ -9,8 +9,11 @@ import {PresentationComponent} from "./design-patterns/prototype/presentation.co
 import {LoggingComponent} from "./design-patterns/decorator/logging.component";
 import { IteratorComponent } from './design-patterns/behavioural-design-pattern/iterator-pattern/iterator.component';
 import { StateComponent } from './design-patterns/behavioural-design-pattern/state-pattern/state.component';
+import {FactoryComponent} from "./design-patterns/factory/factory.component";
+import {AdapterComponent} from "./design-patterns/adapter/adapter.component";
 
-export const routes: Routes = [
+export let routes: Routes;
+routes = [
   {
     path: 'apple-pie-recipe',
     loadComponent: () => AppleRecipeComponent,
@@ -40,14 +43,23 @@ export const routes: Routes = [
     loadComponent: () => PresentationComponent
   },
   {
+    path: 'factory',
+    loadComponent: () => FactoryComponent
+  },
+  {
+    path: 'adapter',
+    loadComponent: () => AdapterComponent
+  },
+  {
     path: 'logging',
     loadComponent: () => LoggingComponent
-  }
+  },
+  {
     path: 'iterator',
     loadComponent: () => IteratorComponent
   },
   {
     path: 'state',
     loadComponent: () => StateComponent
-  }  
+  }
 ];
