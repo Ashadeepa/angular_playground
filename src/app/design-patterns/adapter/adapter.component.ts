@@ -5,7 +5,7 @@ import {ChartingAdapterService} from "./charting-adapter.service";
   selector: 'app-adapter',
   standalone: true,
   imports: [],
-  template: ``
+  template: `<h2> Price : Id</h2>`
 })
 export class AdapterComponent {
   adapterObj : any[];
