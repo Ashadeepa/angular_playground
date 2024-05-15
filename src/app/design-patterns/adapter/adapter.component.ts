@@ -5,12 +5,7 @@ import {ChartingAdapterService} from "./charting-adapter.service";
   selector: 'app-adapter',
   standalone: true,
   imports: [],
-  template: `
-    <div *ngFor="let obj of adapterObj">
-      <p> ID: {{obj.id}} </p>
-      <p> Price: {{obj.price}} </p>
-    </div>
-  `
+  template: ``
 })
 export class AdapterComponent {
   adapterObj : any[];
