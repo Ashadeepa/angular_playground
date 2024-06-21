@@ -68,21 +68,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
             >Operators</a
           >
         </li>
-
-        <li>
-          <a href="#">Contact Us</a>
-        </li>
       </ul>
-
-      <!-- <ul class="list-unstyled CTAs">
-        <li>
-          <a
-            href="https://github.com/Jonnykratz/angularReactive"
-            class="download"
-            >Download code</a
-          >
-        </li>
-      </ul> -->
     </nav>
   `,
   styleUrls: ['./side-menu.component.scss'],

@@ -26,10 +26,6 @@ import { CommonModule } from '@angular/common';
         [ngClass]="{ show: navbarOpen }"
       >
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <!-- <li class="nav-item active">
-            <a class="nav-link" href="#">Signals</a>
-          </li>
-         -->
         </ul>
         <form class="d-flex">
           <input

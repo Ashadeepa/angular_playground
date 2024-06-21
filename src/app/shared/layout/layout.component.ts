@@ -9,9 +9,6 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   selector: 'app-layout',
   standalone: true,
   template: `
-    <!-- <div>
-      <app-header></app-header>
-    </div> -->
     <body>
       <div class="wrapper">
         <side-menu></side-menu>

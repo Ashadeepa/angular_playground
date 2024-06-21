@@ -44,13 +44,6 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
                   </div>
                 </div>
               </div>
-              <div class="card-footer">
-                <!-- <a
-                  href="https://github.com/Jonnykratz/angularReactive"
-                  class="btn btn-primary"
-                  >Github</a
-                > -->
-              </div>
             </div>
           </div>
         </div>
