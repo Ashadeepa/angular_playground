@@ -61,13 +61,13 @@ import { RouterModule, RouterOutlet } from '@angular/router';
           </ul>
         </li>
 
-        <li>
+        <!-- <li>
           <a
             [routerLink]="['/rxjs/operators']"
             routerLinkActive="router-link-active"
             >Operators</a
           >
-        </li>
+        </li> -->
       </ul>
     </nav>
   `,

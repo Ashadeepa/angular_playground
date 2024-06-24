@@ -9,48 +9,45 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="card m-2 p-2">
-            <div class="card-header">BehavoiurSubject</div>
-            <div class="card-body">
-              <h5 class="card-title">
-              A BehavoiurSubject is like an observable but can be multicast to many Observers
-              <h6 class="text-primary">It returns the last Data</h6>
-              </h5>
-              <div class="card-body">
-                <div class="row">
-                  <div class="row pb-2">
-                    <div class="col-md-6">
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        (click)="emitItem()"
-                      >
-                        Emit Item
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        (click)="getItems()"
-                      >
-                      Get Item
-                      </button>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="col-md-3">
-                      <label *ngFor="let item of items">{{item}}</label>
-                    </div>
-                    </div>
-                    </div>
-                  </div>
-                </div>
+   <div class="container mt-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white">BehaviourSubject</div>
+    <div class="card-body">
+      <h5 class="card-title">
+        A BehaviorSubject is like an observable but can be multicast to many Observers
+        <h6 class="text-primary">It returns the last Data</h6>
+      </h5>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-md-6">
+            <button
+              type="button"
+              class="btn btn-primary mr-2"
+              (click)="emitItem()"
+            >
+              Emit Item
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="getItems()"
+            >
+            Get Item
+            </button>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-12">
+                <label class="font-weight-bold">Items: </label>
+                <span *ngFor="let item of items">{{item}} </span>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
   `,
   styleUrls: ['./behaviour-subject.component.scss']
 })
