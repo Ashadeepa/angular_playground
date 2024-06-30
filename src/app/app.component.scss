@@ -1,0 +1,74 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto 100px;
+}
+
+@media (max-width: 500px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+  }
+
+  .container h1 {
+    font-size: 30px;
+  }
+}
+
+nav {
+  background-color: #3498db;
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+  margin-right: 20px;
+}
+
+a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+a:hover {
+  background-color: #2980b9;
+}
+
+.active {
+  background-color: #2c3e50;
+}
+
+.angular-playground-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+.class1 {
+  color: #3498db;
+}
+.class2 {
+  color: #47d1ef;
+}
+.tech-fest {
+  max-width: 100%;
+}
+

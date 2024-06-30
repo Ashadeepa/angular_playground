@@ -1,0 +1,93 @@
+<div class="ashie-verse">
+  <h2>{{ ashieName }}</h2>
+  <div class="flex-container">
+    <div class="flex-item">
+      <img alt="{{ ashieName }}" class="ashie-image" src="{{ ashieImageUrl }}">
+      <p>📌 Follow me on : <a href="https://in.pinterest.com/ashie1709/ashieverse-creations/my-work/" target="_blank">Pinterest</a></p>
+    </div>
+
+    <div class="flex-item">
+
+      <h3>&#64;if</h3>
+
+      <input [(ngModel)]="isCompleted" type="checkbox"/>
+      Check when you spot the 🔥 in the canvas painting in 2 sec!
+      <br>
+          <!--
+            @if (isCompleted) {
+              <p>Congratulations! You spotted it right!</p>
+            }
+            @else {
+              <p>Ouch! You missed it!</p>
+           }-->
+
+      <div *ngIf="isCompleted; else notCompleted">
+        <br>
+        <span>Congratulations! You spotted it right!</span>
+        <pre>
+        <code>
+          &commat;if (isCompleted) &#123;
+            &lt;span>&gt;Congratulations! You spotted it right!&lt;/span&gt;
+           &#125;
+           &commat;else &#123;
+             &lt;span&gt;Ouch! You missed it!&lt;/span&gt;
+           &#125;
+        </code>
+      </pre>
+     </div>
+      <ng-template #notCompleted>
+        <br>
+        <span>Ouch! You missed it!</span>
+        <pre>
+        <code>
+          &lt;div *ngIf="isCompleted"&gt;
+            &lt;p&gt;Congratulations! You spotted it right!&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div *ngIf="!isCompleted"&gt;
+            &lt;p&gt;Ouch! You missed it!&lt;/p&gt;
+          &lt;/div&gt;
+        </code>
+        </pre>
+      </ng-template>
+
+      <h3>&#64;for</h3>
+      Let's go over my collection together and see if you can spot the common elements in most of the paintings
+      <div class="for">
+        @for (item of emptyCollection; track item.id; let index = $index, first = $first; let last = $last, even = $even, odd = $odd; let count = $count) {
+          <li><strong>{{item.name}} </strong> index={{index}} first={{first}} last={{last}} even={{even}} odd={{odd}} count={{count}}</li>
+        }
+        @empty {
+          <span>Task list is empty</span>
+        }
+      </div>
+      <h3>&#64;switch</h3>
+      Common Elements in most of the paintings:
+      @switch (radioValue()) {
+        @case (1) {
+          <span>Moon</span>
+        }
+        @case (2) {
+          <span>LightHouse</span>
+        }
+        @default {
+          <span>Birds</span>
+        }
+      }
+      <pre>
+        <code>
+          &commat;switch (radioValue()) &#123;
+            &commat;case (1) &#123;
+              &lt;span&gt;Moon&lt;/span&gt;
+            &#125;
+            &commat;case (2) &#123;
+              &lt;span&gt;LightHouse&lt;/span&gt;
+            &#125;
+            &commat;default &#123;
+              &lt;span&gt;Birds&lt;/span&gt;
+            &#125;
+          &#125;
+        </code>
+      </pre>
+   </div>
+ </div>
+</div>

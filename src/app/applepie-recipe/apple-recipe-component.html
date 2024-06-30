@@ -1,0 +1,50 @@
+<div class="pie-recipe">
+  <h2 class="pieName">{{ pieName }}</h2>
+  <br>
+  <img src="{{ pieImageUrl }}" alt="{{ pieName }}" class="pie-image">
+
+  <!--- Angular17 @Defer & New Control Flow Example 1-->
+  <h3>Ingredients</h3>
+  @defer (on timer(20s)) {
+    <app-applepie-ingredient></app-applepie-ingredient>
+  }
+  @placeholder {
+    <span><i>Placeholder (should display in 20s)</i></span>
+  }
+
+  <!--- Angular17 @Defer & New Control Flow Example 2-->
+  <h3>Instructions</h3>
+  @defer (on hover) {
+    <ol>
+    @for (step of instructions; track step.id) {
+      <li>{{ step.name }}</li>
+    }
+    </ol>
+  }  @placeholder {
+    <span><i>Placeholder (hover it!)</i></span>
+  }
+
+  <p class="note">Note: {{ recipeNote }}</p>
+
+  <button id="likeButton">👍 Like</button>
+  <button id="subscribeButton">🔔 Subscribe</button>
+  <h3>Popularity Survey</h3>
+  <hr>
+  <!--- Angular17 @Defer & New Control Flow Example 3-->
+  <div>
+    <br>
+    <button class="button-62" role="button" (click)="isClicked.set(true)">Results</button>
+    @defer (when isClicked()) {
+      <app-survey-recipe></app-survey-recipe>
+    } @placeholder {
+      <span class='placeholder'>
+        <h4>Placeholder - Click here to show survey results!</h4>
+      </span>
+    } @loading (minimum 5s) {
+      <h4 class='loading'>Loading...</h4>
+      <div class="loader"></div>
+    } @error {
+      <span class='error'><h4>Error..</h4></span>
+    }
+  </div>
+</div>
