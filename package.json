@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --browsers ChromeHeadless",
     "storybook": "ng run Angular17:storybook",
     "build-storybook": "ng run Angular17:build-storybook"
   },
