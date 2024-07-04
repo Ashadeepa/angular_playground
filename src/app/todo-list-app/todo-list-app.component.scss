@@ -1,0 +1,87 @@
+/* src/app/todo-list-app/todo-list-app.component.scss */
+/* Improved styling for better look and feel */
+
+/* General styling */
+body {
+  background-color: #fff; /* White background for better contrast */
+  font-family: Arial, sans-serif; /* Modern font for better readability */
+  color: #333; /* Darker text for better readability */
+}
+
+/* Title styling */
+h2 {
+  color: #007bff; /* Nice Airlines brand color */
+  margin-bottom: 20px; /* Spacing below the title */
+}
+
+/* Input and button styling */
+input {
+  border: 1px solid #ccc; /* Subtle border for the input */
+  padding: 10px; /* Padding for better text visibility */
+  width: 200px; /* Fixed width for alignment */
+  border-radius: 5px; /* Rounded corners for modern look */
+}
+
+button {
+  background-color: #007bff; /* Brand color for consistency */
+  color: #fff; /* White text for contrast */
+  border: none; /* Remove default border */
+  padding: 10px 15px; /* Padding for a larger click area */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners for modern look */
+  margin-left: 10px; /* Space between input and button */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover for feedback */
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse; /* Remove space between borders */
+  width: 100%; /* Full width */
+  margin-top: 20px; /* Spacing above the table */
+}
+
+th, td {
+  text-align: left; /* Align text to the left */
+  padding: 8px; /* Padding for spacing */
+  border-bottom: 1px solid #ddd; /* Light border for separation */
+}
+
+th {
+  background-color: #f2f2f2; /* Light background for headers */
+}
+
+/* Strikethrough style for completed tasks */
+.strike {
+  text-decoration: line-through;
+}
+
+/* Action icons styling */
+span {
+  cursor: pointer; /* Pointer cursor for clickable actions */
+  margin-right: 10px; /* Space between check mark and cross mark */
+}
+
+/* Completed task color */
+.completed {
+  color: lightgreen;
+}
+
+/* Delete icon color */
+.delete-icon {
+  color: red;
+}
+
+/* Sticky column styling */
+th, td {
+  /* Existing styles... */
+}
+
+th:last-child, td:last-child {
+  position: sticky;
+  right: 0;
+  background-color: white; /* Ensure the sticky header has a background */
+  z-index: 2; /* Ensure it sits above other content */
+}

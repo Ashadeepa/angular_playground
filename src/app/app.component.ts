@@ -1,9 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import { DepartmentService } from './design-patterns/facade/department.service';
-import { EmployeeService } from './design-patterns/facade/employee.service';
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,6 +9,7 @@ import { EmployeeService } from './design-patterns/facade/employee.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  title = 'Angular17';
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
   isRouterLinkEqualTo(route: string): boolean {
     // @ts-ignore

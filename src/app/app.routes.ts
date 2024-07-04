@@ -11,8 +11,10 @@ import { IteratorComponent } from './design-patterns/behavioural-design-pattern/
 import { StateComponent } from './design-patterns/behavioural-design-pattern/state-pattern/state.component';
 import {FactoryComponent} from "./design-patterns/factory/factory.component";
 import {AdapterComponent} from "./design-patterns/adapter/adapter.component";
+import {TodoListAppComponent} from "./todo-list-app/todo-list-app.component";
 
 export let routes: Routes;
+// @ts-ignore
 routes = [
   {
     path: 'apple-pie-recipe',
@@ -61,5 +63,9 @@ routes = [
   {
     path: 'state',
     loadComponent: () => StateComponent
+  },
+  {
+    path: 'todo-list',
+    component: TodoListAppComponent
   }
 ];

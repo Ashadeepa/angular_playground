@@ -1,0 +1,26 @@
+<!-- src/app/todo-list-app/todo-list-app.component.html -->
+<!-- Title and input section -->
+<h2 style="text-align: center;">Nice Airlines</h2>
+<div style="text-align: center;">
+  <input [(ngModel)]="newTodo" placeholder="Add new todo">
+  <button (click)="addTodo()" style="background-color: lightblue;">Add Item</button>
+</div>
+
+<!-- Todo list table -->
+<table style="width: 100%; margin-top: 20px;">
+  <thead>
+    <tr>
+      <th style="text-align: center;">Task</th>
+      <th style="text-align: center;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todoList">
+      <td [ngClass]="{'strike': todo.completed}" style="text-align: center;">{{ todo.task }}</td>
+      <td style="text-align: center;">
+        <span (click)="toggleComplete(todo)" style="color: lightgreen; cursor: pointer; margin-right: 10px;">✓</span>
+        <span (click)="deleteTodo(todo)" style="color: red; cursor: pointer;">✕</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
