@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { TodoListAppComponent } from './todo-list-app.component';
 
 describe('TodoListAppComponent', () => {
@@ -7,7 +8,7 @@ describe('TodoListAppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ TodoListAppComponent ] // Import the standalone component here
+      imports: [ FormsModule, TodoListAppComponent ] // Move TodoListAppComponent to imports
     })
       .compileComponents();
   });
@@ -22,23 +23,29 @@ describe('TodoListAppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('addTodo() should add a new todo item', () => {
+  it('addItem should add a new todo item', () => {
     const initialLength = component.todoList.length;
     component.newTodo = 'Test Todo';
     component.addTodo();
-    expect(component.todoList.length).toBeGreaterThan(initialLength);
+    expect(component.todoList.length).toBe(initialLength + 1);
+    expect(component.todoList[component.todoList.length - 1].task).toEqual('Test Todo');
+    expect(component.todoList[component.todoList.length - 1].completed).toBeFalse();
   });
 
-  it('toggleComplete() should toggle the completion status of a todo item', () => {
-    component.todoList = [{ task: 'Test Todo', completed: false }];
-    component.toggleComplete(component.todoList[0]);
-    expect(component.todoList[0].completed).toBeTruthy();
+  it('deleteItem should remove a todo item', () => {
+    component.newTodo = 'Test Todo';
+    component.addTodo();
+    const itemToDelete = component.todoList[0];
+    component.deleteTodo(itemToDelete);
+    expect(component.todoList.length).toBe(0);
   });
 
-  it('deleteTodo() should remove a todo item', () => {
-    component.todoList = [{ task: 'Test Todo', completed: false }];
-    const initialLength = component.todoList.length;
-    component.deleteTodo(component.todoList[0]);
-    expect(component.todoList.length).toBeLessThan(initialLength);
+  it('markComplete should mark a todo item as completed', () => {
+    component.newTodo = 'Test Todo';
+    component.addTodo();
+    const itemToMark = component.todoList[0];
+    component.markComplete(itemToMark);
+    expect(itemToMark.completed).toBeTrue();
   });
 });
+

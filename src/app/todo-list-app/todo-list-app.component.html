@@ -1,26 +1,27 @@
-<!-- src/app/todo-list-app/todo-list-app.component.html -->
-<!-- Title and input section -->
-<h2 style="text-align: center;">Nice Airlines</h2>
-<div style="text-align: center;">
-  <input [(ngModel)]="newTodo" placeholder="Add new todo">
-  <button (click)="addTodo()" style="background-color: lightblue;">Add Item</button>
-</div>
-
-<!-- Todo list table -->
-<table style="width: 100%; margin-top: 20px;">
-  <thead>
+<!-- Todo List Application -->
+<div class="todo-app-container">
+  <h2>Ashie Airlines</h2>
+  <!-- Input field for new todo item -->
+  <div class="input-group">
+    <input type="text" [(ngModel)]="newTodo" placeholder="Add new task" />
+    <button (click)="addTodo()" style="background-color: lightblue; color: white">Add item</button>
+  </div>
+  <!-- Todo list table -->
+  <table class="todo-table">
+    <thead>
     <tr>
-      <th style="text-align: center;">Task</th>
-      <th style="text-align: center;">Actions</th>
+      <th>Task</th>
+      <th>Actions</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <tr *ngFor="let todo of todoList">
-      <td [ngClass]="{'strike': todo.completed}" style="text-align: center;">{{ todo.task }}</td>
-      <td style="text-align: center;">
-        <span (click)="toggleComplete(todo)" style="color: lightgreen; cursor: pointer; margin-right: 10px;">✓</span>
-        <span (click)="deleteTodo(todo)" style="color: red; cursor: pointer;">✕</span>
+      <td [class.completed]="todo.completed">{{ todo.task }}</td>
+      <td>
+        <span (click)="markComplete(todo)" class="check-mark">&#10003;</span>
+        <span (click)="deleteTodo(todo)" class="delete-mark">&#10005;</span>
       </td>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

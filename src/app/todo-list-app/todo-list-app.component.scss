@@ -1,87 +1,79 @@
-/* src/app/todo-list-app/todo-list-app.component.scss */
-/* Improved styling for better look and feel */
-
-/* General styling */
-body {
-  background-color: #fff; /* White background for better contrast */
-  font-family: Arial, sans-serif; /* Modern font for better readability */
-  color: #333; /* Darker text for better readability */
+/* Enhanced Styles for Todo List Application */
+.todo-app-container {
+  background-color: #fff; /* Cleaner color reference */
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  max-width: 600px; /* Max width for better readability */
+  margin: 20px auto; /* Center align the container */
 }
 
-/* Title styling */
 h2 {
-  color: #007bff; /* Nice Airlines brand color */
-  margin-bottom: 20px; /* Spacing below the title */
+  color: #333;
+  margin-bottom: 30px; /* More space below the title */
 }
 
-/* Input and button styling */
-input {
-  border: 1px solid #ccc; /* Subtle border for the input */
-  padding: 10px; /* Padding for better text visibility */
-  width: 200px; /* Fixed width for alignment */
-  border-radius: 5px; /* Rounded corners for modern look */
+.input-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1; /* Take available space */
+  padding: 10px;
+  border: 2px solid #ccc; /* Lighter border */
+  border-radius: 4px; /* Rounded corners for input */
+  margin-right: 10px; /* Space between input and button */
 }
 
 button {
-  background-color: #007bff; /* Brand color for consistency */
-  color: #fff; /* White text for contrast */
-  border: none; /* Remove default border */
-  padding: 10px 15px; /* Padding for a larger click area */
-  cursor: pointer; /* Pointer cursor on hover */
-  border-radius: 5px; /* Rounded corners for modern look */
-  margin-left: 10px; /* Space between input and button */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px; /* Rounded corners for button */
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s; /* Smooth background transition */
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker shade on hover for feedback */
+  background-color: #007bff; /* Darker shade on hover */
 }
 
-/* Table styling */
-table {
-  border-collapse: collapse; /* Remove space between borders */
-  width: 100%; /* Full width */
-  margin-top: 20px; /* Spacing above the table */
+.todo-table {
+  width: 100%;
+  margin-top: 20px; /* More space above the table */
+  border-collapse: collapse; /* Remove gaps between cells */
 }
 
 th, td {
-  text-align: left; /* Align text to the left */
-  padding: 8px; /* Padding for spacing */
-  border-bottom: 1px solid #ddd; /* Light border for separation */
+  padding: 10px;
+  border-bottom: 1px solid #eee; /* Light border for each row */
 }
 
-th {
-  background-color: #f2f2f2; /* Light background for headers */
-}
-
-/* Strikethrough style for completed tasks */
-.strike {
-  text-decoration: line-through;
-}
-
-/* Action icons styling */
-span {
-  cursor: pointer; /* Pointer cursor for clickable actions */
-  margin-right: 10px; /* Space between check mark and cross mark */
-}
-
-/* Completed task color */
 .completed {
-  color: lightgreen;
+  text-decoration: line-through;
+  color: #888; /* Softer color for completed tasks */
 }
 
-/* Delete icon color */
-.delete-icon {
-  color: red;
+.check-mark, .delete-mark {
+  cursor: pointer;
+  padding: 5px; /* Easier to click */
+  border-radius: 50%; /* Circular background */
+  margin: 0 5px; /* Space around icons */
 }
 
-/* Sticky column styling */
-th, td {
-  /* Existing styles... */
+.check-mark {
+  color: #4CAF50; /* Material green */
+  &:hover {
+    background-color: #e8f5e9; /* Light green background on hover */
+  }
 }
 
-th:last-child, td:last-child {
-  position: sticky;
-  right: 0;
-  background-color: white; /* Ensure the sticky header has a background */
-  z-index: 2; /* Ensure it sits above other content */
+.delete-mark {
+  color: #F44336; /* Material red */
+  &:hover {
+    background-color: #ffebee; /* Light red background on hover */
+  }
 }
