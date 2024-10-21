@@ -1,0 +1,47 @@
+.outerContainer {
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+
+:root {
+    /* Define custom properties here */
+
+}
+
+/*  
+selector::pseudo-element {​
+
+    property: value;​
+  
+}
+*/
+
+button::before {
+    content: ""; 
+  }
+  
+  button {
+    background-color: #c2104c;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .quote::after {
+   
+  }
+  
+  h1::first-letter {
+   
+  }
+  
+  ::selection {
+   
+  }
+  
+
+

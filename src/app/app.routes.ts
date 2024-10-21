@@ -12,6 +12,7 @@ import { StateComponent } from './design-patterns/behavioural-design-pattern/sta
 import {FactoryComponent} from "./design-patterns/factory/factory.component";
 import {AdapterComponent} from "./design-patterns/adapter/adapter.component";
 import {TodoListAppComponent} from "./todo-list-app/todo-list-app.component";
+import { CssTricksComponent } from './css-tricks/css-tricks.component';
 
 export let routes: Routes;
 // @ts-ignore
@@ -67,5 +68,9 @@ routes = [
   {
     path: 'todo-list',
     component: TodoListAppComponent
+  },
+  {
+    path: 'css-tricks',
+    component: CssTricksComponent
   }
 ];
