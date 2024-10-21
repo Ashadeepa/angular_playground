@@ -15,6 +15,12 @@ import {FormsModule} from "@angular/forms";
 export class TodoListAppComponent {
   newTodo: string = '';
   todoList: any[] = [];
+  jsonString: any;
+  reverseList: any[] | undefined;
+  reversejsonString: any;
+  findfromLastList: any[] | undefined;
+  findfromLastListString: string | undefined;
+  isAtChar: any;
 
   // Function to add a new todo item
   addTodo() {
@@ -22,6 +28,15 @@ export class TodoListAppComponent {
       this.todoList.push({ task: this.newTodo, completed: false });
       this.newTodo = ''; // Reset input field
     }
+    
+    //TODO : change array by copy
+
+    //TODO : At()
+    
+    //TODO : find from last
+    
+    //TODO: RegExp Match using /d flag
+    
   }
 
   // Function to mark a todo item as completed
