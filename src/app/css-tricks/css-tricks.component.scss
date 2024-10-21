@@ -42,6 +42,58 @@ button::before {
   ::selection {
    
   }
+
+
+  /******* CSS Functions START *************/
+
+  .calc-example {
+    width: calc(50% + 100px); /* Full width minus 40 pixels */
+    padding: 20px;
+    background-color: lightblue;
+    border: 2px solid #333;
+    text-align: center;
+}
+
+.min-example {
+    width: min(40%, 300px); /* 80% of the container or max 300 pixels */
+    padding: 20px;
+    background-color: lightgreen;
+    border: 2px solid #333;
+    text-align: center;
+}
+
+.max-example {
+    height: max(100px, 10vh); /* At least 200 pixels or 30% of viewport height */
+    padding: 20px;
+    background-color: lightcoral;
+    border: 2px solid #333;
+    text-align: center;
+}
+
+
+  /******* CSS Functions END *************/
+
+
+  /******** CSS Flexbox START ***********/
+
+  .flex-container {
+    display: flex; /* Activates flexbox layout */
+   //  justify-content: space-between; /* Distributes space between items */
+   /* flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right */
+    padding: 10px;
+    background-color: #c0a5a5;
+    border: 2px solid #000;
+}
+
+.flex-item {
+    padding: 20px;
+    background-color: #091057;
+    margin: 5px;
+    color: white;
+    flex: 1; /* All items will grow equally */
+}
+
+  /******** CSS Flexbox END ***********/
   
 
 
