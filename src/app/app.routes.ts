@@ -13,6 +13,7 @@ import {FactoryComponent} from "./design-patterns/factory/factory.component";
 import {AdapterComponent} from "./design-patterns/adapter/adapter.component";
 import {TodoListAppComponent} from "./todo-list-app/todo-list-app.component";
 import { CssTricksComponent } from './css-tricks/css-tricks.component';
+import { WorkshopProblemStatementComponent } from './workshop-problem-statement/workshop-problem-statement.component';
 
 export let routes: Routes;
 // @ts-ignore
@@ -72,5 +73,9 @@ routes = [
   {
     path: 'css-tricks',
     component: CssTricksComponent
+  },
+  {
+    path: 'problem-statement',
+    component: WorkshopProblemStatementComponent
   }
 ];

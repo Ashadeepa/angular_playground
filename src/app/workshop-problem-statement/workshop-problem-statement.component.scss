@@ -1,0 +1,118 @@
+/* 1. Global Styles and CSS Variables */
+:host {
+    --card-width: 300px;
+    --card-padding: 20px;
+    --card-bg-color: #fff;
+    --card-border-radius: 10px;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --text-color: #333;
+    --link-color: #007bff;
+    --header-bg-color: #f0f0f0;
+    --font-size: 1.1rem;
+  }
+  
+  /* 2. General Reset for Margins and Padding */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* 3. Layout Styles - Card Grid */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .card {
+    width: var(--card-width);
+    background-color: var(--card-bg-color);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+    border: 1px solid black;
+  }
+  
+  .card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* 4. Header for Cards */
+  .card-header {
+    width: 100%;
+    height: 150px;
+    background-color: var(--header-bg-color);
+    border-radius: var(--card-border-radius);
+    position: relative;
+  }
+  
+  .card-header::before {
+    content: '\f007'; /* FontAwesome user icon */
+    font-family: 'FontAwesome';
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+  }
+  
+  /* 5. Card Title */
+  .card-title {
+    font-size: var(--font-size);
+    color: var(--text-color);
+    margin-top: 15px;
+  }
+  
+  /* 6. Card Content */
+  .card-content {
+    flex-grow: 1;
+    color: var(--text-color);
+    font-size: clamp(12px, 1.5vw + 1rem, 16px);
+    margin-bottom: 10px;
+  }
+  
+  /* 7. Card Link */
+  .card-link {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: clamp(12px, 1vw + 0.8rem, 14px);
+    margin-top: 10px;
+  }
+  
+  .card-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* 8. Responsive Layout with Flexbox */
+  @media (max-width: 768px) {
+    .card {
+      width: calc(50% - 20px); /* Two cards per row */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      width: 100%; /* Single card per row */
+    }
+  }
+  
