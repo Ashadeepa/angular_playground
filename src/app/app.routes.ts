@@ -14,6 +14,7 @@ import {AdapterComponent} from "./design-patterns/adapter/adapter.component";
 import {TodoListAppComponent} from "./todo-list-app/todo-list-app.component";
 import { CssTricksComponent } from './css-tricks/css-tricks.component';
 import { WorkshopProblemStatementComponent } from './workshop-problem-statement/workshop-problem-statement.component';
+import { DebugTricksComponent } from './debug-tricks/debug-tricks.component';
 
 export let routes: Routes;
 // @ts-ignore
@@ -77,5 +78,9 @@ routes = [
   {
     path: 'problem-statement',
     component: WorkshopProblemStatementComponent
+  },
+  {
+    path: 'debug-tricks',
+    component: DebugTricksComponent
   }
 ];

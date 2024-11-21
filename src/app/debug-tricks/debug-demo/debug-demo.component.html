@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key Advantages of Angular</title>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <h2>Key Advantages of Angular</h2>
+      <ul id="advantages-list">
+        <li><strong>Efficient Data Binding:</strong> Supports two-way data binding to streamline communication between
+          model and view.</li>
+        <li><strong>Modular Component Architecture:</strong> Promotes reusability and maintainability through a
+          component-driven approach.</li>
+        <li><strong>Built-In Dependency Injection:</strong> Simplifies service management and enhances testability.</li>
+        <li><strong>CLI Tooling:</strong> Provides an optimized workflow for development, testing, and deployment.</li>
+        <li><strong>Cross-Platform Capabilities:</strong> Supports web, mobile, and desktop applications from a single
+          codebase.</li>
+      </ul>
+
+    </tr>
+    <tr>
+      <button id="toggle-button" (click)="toggleAdvantage()" (mouseenter)="showPopup = true"
+        (mouseleave)="showPopup = false">Add/Remove Points</button>
+
+      <div *ngIf="showPopup" class="popup">
+        This is a popup message!
+      </div>
+    </tr>
+  </table>
+</body>
+
+</html>
