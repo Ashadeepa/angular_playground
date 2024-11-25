@@ -1,0 +1,502 @@
+[
+    {
+        "name": "Apple",
+        "cost": 63,
+        "status": "fresh"
+    },
+    {
+        "name": "Apricot",
+        "cost": 74,
+        "status": "Fresh"
+    },
+    {
+        "name": "Avocado",
+        "cost": 72,
+        "status": "fresh"
+    },
+    {
+        "name": "Asparagus",
+        "cost": 80,
+        "status": "fresh"
+    },
+    {
+        "name": "Artichoke",
+        "cost": 51,
+        "status": "Fresh"
+    },
+    {
+        "name": "Banana",
+        "cost": 71,
+        "status": "fresh"
+    },
+    {
+        "name": "Blueberry",
+        "cost": 17,
+        "status": "fresh"
+    },
+    {
+        "name": "Blackberry",
+        "cost": 20,
+        "status": "fresh"
+    },
+    {
+        "name": "Broccoli",
+        "cost": 22,
+        "status": "Fresh"
+    },
+    {
+        "name": "Cabbage",
+        "cost": 34,
+        "status": "fresh"
+    },
+    {
+        "name": "Carrot",
+        "cost": 39,
+        "status": "Fresh"
+    },
+    {
+        "name": "Cauliflower",
+        "cost": 27,
+        "status": "Fresh"
+    },
+    {
+        "name": "Celery",
+        "cost": 75,
+        "status": "fresh"
+    },
+    {
+        "name": "Cherry",
+        "cost": 43,
+        "status": "fresh"
+    },
+    {
+        "name": "Cucumber",
+        "cost": 73,
+        "status": "fresh"
+    },
+    {
+        "name": "Date",
+        "cost": 27,
+        "status": "Fresh"
+    },
+    {
+        "name": "Dragonfruit",
+        "cost": 88,
+        "status": "Fresh"
+    },
+    {
+        "name": "Durian",
+        "cost": 77,
+        "status": "Fresh"
+    },
+    {
+        "name": "Eggplant",
+        "cost": 13,
+        "status": "fresh"
+    },
+    {
+        "name": "Elderberry",
+        "cost": 73,
+        "status": "Fresh"
+    },
+    {
+        "name": "Fennel",
+        "cost": 16,
+        "status": "Fresh"
+    },
+    {
+        "name": "Fig",
+        "cost": 48,
+        "status": "Fresh"
+    },
+    {
+        "name": "Grape",
+        "cost": 17,
+        "status": "Fresh"
+    },
+    {
+        "name": "Grapefruit",
+        "cost": 67,
+        "status": "Fresh"
+    },
+    {
+        "name": "Garlic",
+        "cost": 12,
+        "status": "fresh"
+    },
+    {
+        "name": "Ginger",
+        "cost": 46,
+        "status": "Fresh"
+    },
+    {
+        "name": "Gooseberry",
+        "cost": 97,
+        "status": "Fresh"
+    },
+    {
+        "name": "Guava",
+        "cost": 53,
+        "status": "fresh"
+    },
+    {
+        "name": "Honeydew",
+        "cost": 98,
+        "status": "fresh"
+    },
+    {
+        "name": "Jackfruit",
+        "cost": 52,
+        "status": "Fresh"
+    },
+    {
+        "name": "Jalapeño",
+        "cost": 55,
+        "status": "fresh"
+    },
+    {
+        "name": "Jujube",
+        "cost": 34,
+        "status": "fresh"
+    },
+    {
+        "name": "Kale",
+        "cost": 40,
+        "status": "Fresh"
+    },
+    {
+        "name": "Kiwi",
+        "cost": 11,
+        "status": "fresh"
+    },
+    {
+        "name": "Kumquat",
+        "cost": 19,
+        "status": "fresh"
+    },
+    {
+        "name": "Lemon",
+        "cost": 60,
+        "status": "fresh"
+    },
+    {
+        "name": "Lychee",
+        "cost": 52,
+        "status": "Fresh"
+    },
+    {
+        "name": "Mango",
+        "cost": 10,
+        "status": "fresh"
+    },
+    {
+        "name": "Mulberry",
+        "cost": 85,
+        "status": "Fresh"
+    },
+    {
+        "name": "Mushroom",
+        "cost": 71,
+        "status": "fresh"
+    },
+    {
+        "name": "Nectarine",
+        "cost": 12,
+        "status": "fresh"
+    },
+    {
+        "name": "Olive",
+        "cost": 98,
+        "status": "fresh"
+    },
+    {
+        "name": "Onion",
+        "cost": 81,
+        "status": "Fresh"
+    },
+    {
+        "name": "Orange",
+        "cost": 96,
+        "status": "fresh"
+    },
+    {
+        "name": "Papaya",
+        "cost": 18,
+        "status": "Fresh"
+    },
+    {
+        "name": "Passionfruit",
+        "cost": 58,
+        "status": "fresh"
+    },
+    {
+        "name": "Peach",
+        "cost": 90,
+        "status": "Fresh"
+    },
+    {
+        "name": "Pear",
+        "cost": 90,
+        "status": "Fresh"
+    },
+    {
+        "name": "Pineapple",
+        "cost": 64,
+        "status": "Fresh"
+    },
+    {
+        "name": "Apple",
+        "cost": 50,
+        "status": "Fresh"
+    },
+    {
+        "name": "Banana",
+        "cost": 30,
+        "status": "Fresh"
+    },
+    {
+        "name": "Mango",
+        "cost": 70,
+        "status": "Fresh"
+    },
+    {
+        "name": "Grapes",
+        "cost": 80,
+        "status": "Fresh"
+    },
+    {
+        "name": "Orange",
+        "cost": 60,
+        "status": "Fresh"
+    },
+    {
+        "name": "Strawberry",
+        "cost": 45,
+        "status": "Fresh"
+    },
+    {
+        "name": "Kiwi",
+        "cost": 90,
+        "status": "Fresh"
+    },    
+    {
+        "name": "Plum",
+        "cost": 31,
+        "status": "Fresh"
+    },
+    {
+        "name": "Pomegranate",
+        "cost": 60,
+        "status": "fresh"
+    },
+    {
+        "name": "Potato",
+        "cost": 25,
+        "status": "Fresh"
+    },
+    {
+        "name": "Pumpkin",
+        "cost": 95,
+        "status": "fresh"
+    },
+    {
+        "name": "Quince",
+        "cost": 37,
+        "status": "Fresh"
+    },
+    {
+        "name": "Radish",
+        "cost": 89,
+        "status": "Fresh"
+    },
+    {
+        "name": "Raspberry",
+        "cost": 50,
+        "status": "Fresh"
+    },
+    {
+        "name": "Rhubarb",
+        "cost": 61,
+        "status": "fresh"
+    },
+    {
+        "name": "Spinach",
+        "cost": 11,
+        "status": "fresh"
+    },
+    {
+        "name": "Strawberry",
+        "cost": 45,
+        "status": "fresh"
+    },
+    {
+        "name": "Sweet Potato",
+        "cost": 33,
+        "status": "Fresh"
+    },
+    {
+        "name": "Tomato",
+        "cost": 90,
+        "status": "Fresh"
+    },
+    {
+        "name": "Turnip",
+        "cost": 68,
+        "status": "fresh"
+    },
+    {
+        "name": "Ugli Fruit",
+        "cost": 27,
+        "status": "Fresh"
+    },
+    {
+        "name": "Watermelon",
+        "cost": 86,
+        "status": "fresh"
+    },
+    {
+        "name": "Yam",
+        "cost": 18,
+        "status": "Fresh"
+    },
+    {
+        "name": "Zucchini",
+        "cost": 30,
+        "status": "fresh"
+    },
+    {
+        "name": "Acorn Squash",
+        "cost": 55,
+        "status": "fresh"
+    },
+    {
+        "name": "Acerola",
+        "cost": 50,
+        "status": "fresh"
+    },
+    {
+        "name": "Arugula",
+        "cost": 92,
+        "status": "Fresh"
+    },
+    {
+        "name": "Bok Choy",
+        "cost": 27,
+        "status": "Fresh"
+    },
+    {
+        "name": "Butternut Squash",
+        "cost": 35,
+        "status": "Fresh"
+    },
+    {
+        "name": "Chayote",
+        "cost": 85,
+        "status": "fresh"
+    },
+    {
+        "name": "Collard Greens",
+        "cost": 14,
+        "status": "Fresh"
+    },
+    {
+        "name": "Cranberry",
+        "cost": 46,
+        "status": "Fresh"
+    },
+    {
+        "name": "Daikon",
+        "cost": 50,
+        "status": "Fresh"
+    },
+    {
+        "name": "Dandelion Greens",
+        "cost": 86,
+        "status": " fresh"
+    },
+    {
+        "name": "Endive",
+        "cost": 90,
+        "status": "fresh"
+    },
+    {
+        "name": "Escarole",
+        "cost": 76,
+        "status": "fresh"
+    },
+    {
+        "name": "Horseradish",
+        "cost": 46,
+        "status": "fresh"
+    },
+    {
+        "name": "Jicama",
+        "cost": 36,
+        "status": "fresh"
+    },
+    {
+        "name": "Kohlrabi",
+        "cost": 72,
+        "status": "fresh"
+    },
+    {
+        "name": "Leek",
+        "cost": 37,
+        "status": "Fresh"
+    },
+    {
+        "name": "Lettuce",
+        "cost": 76,
+        "status": "Fresh"
+    },
+    {
+        "name": "Okra",
+        "cost": 26,
+        "status": "fresh"
+    },
+    {
+        "name": "Parsley",
+        "cost": 70,
+        "status": "Fresh"
+    },
+    {
+        "name": "Parsnip",
+        "cost": 14,
+        "status": "Fresh"
+    },
+    {
+        "name": "Pea",
+        "cost": 43,
+        "status": "Fresh"
+    },
+    {
+        "name": "Poblano",
+        "cost": 15,
+        "status": "Fresh"
+    },
+    {
+        "name": "Rutabaga",
+        "cost": 82,
+        "status": "fresh"
+    },
+    {
+        "name": "Snow Pea",
+        "cost": 93,
+        "status": "fresh"
+    },
+    {
+        "name": "Sorrel",
+        "cost": 63,
+        "status": "fresh"
+    },
+    {
+        "name": "Swiss Chard",
+        "cost": 39,
+        "status": "Fresh"
+    },
+    {
+        "name": "Watercress",
+        "cost": 80,
+        "status": "Fresh"
+    }
+]
