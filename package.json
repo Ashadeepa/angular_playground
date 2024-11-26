@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers ChromeHeadless",
     "storybook": "ng run Angular17:storybook",
-    "build-storybook": "ng run Angular17:build-storybook"
+    "build-storybook": "ng run Angular17:build-storybook",
+    "playwright": "npx playwright install chromium && npx playwright test playwright-example.spec.ts --debug"
   },
   "private": true,
   "dependencies": {
@@ -31,7 +32,7 @@
     "@angular/compiler-cli": "^17.0.0",
     "@chromatic-com/storybook": "^1.2.12",
     "@compodoc/compodoc": "^1.1.23",
-    "@playwright/test": "^1.45.3",
+    "@playwright/test": "^1.49.0",
     "@storybook/addon-docs": "^8.0.0",
     "@storybook/addon-essentials": "^8.0.0",
     "@storybook/addon-interactions": "^8.0.0",

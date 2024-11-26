@@ -24,11 +24,11 @@
 
     </tr>
     <tr>
-      <button id="toggle-button" (click)="toggleAdvantage()" (mouseenter)="showPopup = true"
+      <button id="toggle-button" (click)="toggleAdvantage()" (mouseenter)="showPopup = true;randomize()"
         (mouseleave)="showPopup = false">Add/Remove Points</button>
 
       <div *ngIf="showPopup" class="popup">
-        This is a popup message!
+        <p>{{randomMessage}}</p>
       </div>
     </tr>
   </table>

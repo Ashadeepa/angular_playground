@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Subscription, takeWhile } from 'rxjs';
+import  fruitesAndVeggies from '../../../assets/fruitesAndVegetables.json';
+import { FruitsAndVegetablesResponse } from '../FruitsAndVegetablesResponse.model';
 
 @Component({
   selector: 'app-sec-counter',
@@ -13,25 +15,16 @@ export class SecCounterComponent implements OnInit, OnDestroy {
 
   counter = 0;
   maxSeconds = 100;
-  private counterSubscription: Subscription | undefined;
+  counterSubscription: Subscription | undefined;
+  
+  fruitsAndVegetablesResponse:FruitsAndVegetablesResponse[] = fruitesAndVeggies;
+  itemsStartingWithA: string[] = [];
+  processedFruitesAndVeggies:FruitsAndVegetablesResponse[] = []
 
   ngOnInit(): void {
     this.startCounter();
-     // Initialize list of 100 fruits and vegetables
-     this.fruitsAndVegetables = [
-      'Apple', 'Apricot', 'Avocado', 'Asparagus', 'Artichoke', 'Banana', 'Blueberry', 'Blackberry', 'Broccoli', 'Cabbage',
-      'Carrot', 'Cauliflower', 'Celery', 'Cherry', 'Cucumber', 'Date', 'Dragonfruit', 'Durian', 'Eggplant', 'Elderberry',
-      'Fennel', 'Fig', 'Grape', 'Grapefruit', 'Garlic', 'Ginger', 'Gooseberry', 'Guava', 'Honeydew', 'Jackfruit',
-      'Jalapeño', 'Jujube', 'Kale', 'Kiwi', 'Kumquat', 'Lemon', 'Lime', 'Lychee', 'Mango', 'Mulberry',
-      'Mushroom', 'Nectarine', 'Olive', 'Onion', 'Orange', 'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Pineapple',
-      'Plum', 'Pomegranate', 'Potato', 'Pumpkin', 'Quince', 'Radish', 'Raspberry', 'Rhubarb', 'Spinach', 'Starfruit',
-      'Strawberry', 'Sweet Potato', 'Tamarind', 'Tomato', 'Turnip', 'Ugli Fruit', 'Watermelon', 'Yam', 'Zucchini', 
-      'Acorn Squash', 'Acerola', 'Arugula', 'Bok Choy', 'Butternut Squash', 'Chayote', 'Collard Greens', 'Cranberry', 
-      'Daikon', 'Dandelion Greens', 'Endive', 'Escarole', 'Horseradish', 'Jicama', 'Kohlrabi', 'Leek', 'Lettuce', 
-      'Okra', 'Parsley', 'Parsnip', 'Pea', 'Poblano', 'Rutabaga', 'Snow Pea', 'Sorrel', 'Swiss Chard', 'Watercress'
-    ];
+    // Initialize list of 100 fruits and vegetables
 
-    
     // Filter the list for items that start with 'A'
     this.enrichFruitesAndVeggies();
     this.logAllOders();
@@ -52,14 +45,17 @@ export class SecCounterComponent implements OnInit, OnDestroy {
     // console.table(orders);
   }
 
-  private enrichFruitesAndVeggies() {
-    console.log('fruites and veggies processing start')
-    this.itemsStartingWithA = this.fruitsAndVegetables
-      .map(item => `${item}_${item.length}`)
+  enrichFruitesAndVeggies() {
+    console.log('fruites and veggies processing start');
+    this.processedFruitesAndVeggies = this.fruitsAndVegetablesResponse.filter((item)=>{
+      return item.cost && (item.cost < 100) && (item.status.toLowerCase() === 'fresh');
+    })
+    this.itemsStartingWithA = this.fruitsAndVegetablesResponse.map(ele=>ele.name)
+      .map(item => `${item}_${item?.length}`)
       .filter(item => {
-        return item.startsWith('A');
+        return item.toUpperCase().startsWith('A');
       });
-    console.log('fruites and veggies processing complete')
+    console.log('fruites and veggies processing complete');
   }
 
   startCounter(): void {
@@ -74,7 +70,7 @@ export class SecCounterComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.counter++;
       });
-      console.log('counting is started');
+    console.log('counting is started');
     console.groupEnd();
   }
 
@@ -92,9 +88,6 @@ export class SecCounterComponent implements OnInit, OnDestroy {
     this.counter = 0;
     this.startCounter();
   }
-
-  fruitsAndVegetables: string[] = [];
-  itemsStartingWithA: string[] = [];
 
   ngOnDestroy(): void {
     this.stopCounter();
