@@ -15,6 +15,8 @@ import {TodoListAppComponent} from "./todo-list-app/todo-list-app.component";
 import { CssTricksComponent } from './css-tricks/css-tricks.component';
 import { WorkshopProblemStatementComponent } from './workshop-problem-statement/workshop-problem-statement.component';
 import { DebugTricksComponent } from './debug-tricks/debug-tricks.component';
+import { AnimalClassifierComponent } from './animal-classifier/animal-classifier.component';
+import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
 
 export let routes: Routes;
 // @ts-ignore
@@ -82,5 +84,13 @@ routes = [
   {
     path: 'debug-tricks',
     component: DebugTricksComponent
+  },
+  {
+    path: 'animal-classifier',
+    component: AnimalClassifierComponent
+  },
+  {
+    path: 'sentiment-analysis',
+    component: SentimentAnalysisComponent
   }
 ];

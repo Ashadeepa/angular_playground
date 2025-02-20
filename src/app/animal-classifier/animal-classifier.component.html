@@ -1,0 +1,21 @@
+<div class="panel">
+
+  <div class="glass-effect">
+    <h1 style="color:white">Image Classifier</h1>
+    <input style="color:white" type="file" (change)="onFileChange($event)" accept="image/*">
+    
+    <div *ngIf="imageSrc">
+      <img [src]="imageSrc" #imageUpload class="preview">
+    </div>
+  
+    <div *ngIf="predictions.length">
+      <h2 style="color:white">Predictions:</h2>
+      <ul>
+        <li *ngFor="let pred of predictions">
+          {{ pred.className }} - {{ pred.probability }}%
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+</div>

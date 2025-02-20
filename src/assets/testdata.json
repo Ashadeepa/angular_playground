@@ -1,0 +1,15 @@
+{
+    "sentences": [
+        "LG customer service was prompt and resolved my query efficiently.",
+        "I had to call multiple times before I could get a proper response from LG support.",
+        "The LG representative was patient and helped me troubleshoot the issue step by step.",
+        "It was a nightmare dealing with LG support, they kept delaying my request.",
+        "The support team quickly replaced my faulty LG washing machine. Great service!",
+        "LG customer service ignored my emails and provided no assistance.",
+        "The technician arrived on time and fixed my issue professionally.",
+        "The live chat support from LG was slow and unhelpful.",
+        "The LG agent went the extra mile to ensure my problem was fixed.",
+        "I regret reaching out to LG support; they were completely unresponsive."
+    ],
+    "labels": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+}
