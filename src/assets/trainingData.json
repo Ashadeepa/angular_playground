@@ -1,0 +1,16 @@
+{
+    "sentences": [
+      "The LG representative was very helpful and resolved my issue quickly.",
+      "I had to wait for a long time before getting a response from LG support.",
+      "The LG agent was polite and assisted me efficiently.",
+      "My experience with LG customer service was terrible, they were unresponsive.",
+      "The technician fixed my LG refrigerator issue in no time. Very satisfied!",
+      "LG support failed to address my problem. Very disappointing.",
+      "The agent was knowledgeable and guided me through the setup process smoothly.",
+      "I was transferred multiple times and got no resolution for my LG TV issue.",
+      "The LG chatbot provided quick and accurate responses.",
+      "I had a frustrating time dealing with LG's warranty claim process."
+    ],
+    "labels": [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+  }
+  
