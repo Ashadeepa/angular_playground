@@ -45,6 +45,7 @@ export class SentimentAnalysisComponent implements OnInit {
       });
     });
     this.maxLen = Math.max(...this.sentences.map(s => s.split(' ').length));
+    console.log(`Max sentence length: ${this.maxLen}`);
   }
 
   encodeSentence(sentence: string): number[] {
@@ -74,7 +75,9 @@ export class SentimentAnalysisComponent implements OnInit {
   async trainModel() {
     const encodedSentences = this.sentences.map(s => {
       const encoded = this.encodeSentence(s);
-      return [...encoded, ...Array(this.maxLen - encoded.length).fill(0)];
+      const padded = this.maxLen >= encoded.length ? [...encoded, ...Array(this.maxLen - encoded.length).fill(0)] : encoded.slice(0, this.maxLen);
+      console.log(`Encoded sentence length: ${encoded.length}, Padded length: ${padded.length}`);
+      return padded;
     });
 
     const xs = tf.tensor2d(encodedSentences);
@@ -92,9 +95,14 @@ export class SentimentAnalysisComponent implements OnInit {
     const testSentences = testingData.sentences;
     const testLabels = testingData.labels;
 
+    console.log(`Test sentences: ${testSentences}`);
+    console.log(`Test labels: ${testLabels}`);
+
     const encodedTestSentences = testSentences.map(s => {
       const encoded = this.encodeSentence(s);
-      return [...encoded, ...Array(this.maxLen - encoded.length).fill(0)];
+      const padded = this.maxLen >= encoded.length ? [...encoded, ...Array(this.maxLen - encoded.length).fill(0)] : encoded.slice(0, this.maxLen);
+      console.log(`Encoded test sentence length: ${encoded.length}, Padded length: ${padded.length}`);
+      return padded;
     });
 
     const xsTest = tf.tensor2d(encodedTestSentences);
@@ -108,7 +116,7 @@ export class SentimentAnalysisComponent implements OnInit {
 
   async predictSentiment(sentence: string) {
     const encoded = this.encodeSentence(sentence);
-    const padded = [...encoded, ...Array(this.maxLen - encoded.length).fill(0)];
+    const padded = this.maxLen >= encoded.length ? [...encoded, ...Array(this.maxLen - encoded.length).fill(0)] : encoded.slice(0, this.maxLen);
     const input = tf.tensor2d([padded]);
     const prediction = this.model.predict(input);
     const result = (await prediction.data())[0];
