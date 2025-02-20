@@ -1,17 +1,16 @@
-
 <div class="container">
-    <h1>Sentiment Analysis</h1>
-    <p>Enter a sentence below to analyze its sentiment:</p>
-  
-    <input [(ngModel)]="inputSentence" placeholder="Type your sentence here...">
-    
-    <button (click)="predictSentiment(inputSentence)">Analyze Sentiment</button>
-  
-    <div *ngIf="predictionResult">
-      <h3>Sentiment Result:</h3>
-      <p>{{ predictionResult }}</p>
-    </div>
-  
-    <div id="trainingPerformance"></div>
+  <h1>Sentiment Analysis</h1>
+  <p>Model accuracy: {{ modelAccuracy }}</p>
+  <p>Enter a sentence below to analyze its sentiment:</p>
+
+  <input [(ngModel)]="inputSentence" placeholder="Type your sentence here...">
+
+  <button (click)="predictSentiment(inputSentence)">Analyze Sentiment</button>
+
+  <div *ngIf="predictionResult">
+    <h3>Sentiment Result:</h3>
+    <p>{{ predictionResult }}</p>
   </div>
-  
+
+  <div id="trainingPerformance"></div>
+</div>
