@@ -17,6 +17,8 @@ import { WorkshopProblemStatementComponent } from './workshop-problem-statement/
 import { DebugTricksComponent } from './debug-tricks/debug-tricks.component';
 import { AnimalClassifierComponent } from './animal-classifier/animal-classifier.component';
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
+import { InnerHtmlBindingComponentComponent } from './inner-html-binding-component/inner-html-binding-component.component';
+import { BypassSecurityComponentComponent } from './bypass-security-component/bypass-security-component.component';
 
 export let routes: Routes;
 // @ts-ignore
@@ -92,5 +94,13 @@ routes = [
   {
     path: 'sentiment-analysis',
     component: SentimentAnalysisComponent
+  },
+  {
+    path: 'html-binding',
+    component: InnerHtmlBindingComponentComponent
+  },
+  {
+    path: 'bypass-security',
+    component: BypassSecurityComponentComponent
   }
 ];
