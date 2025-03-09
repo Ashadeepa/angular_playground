@@ -1,0 +1,16 @@
+.html-binding-section {
+    font-family: math;
+    width: 33.33%;
+    margin-left: 33.33%;
+    padding: 20px 10px 20px 10px;
+    background-color: #F0F8FF;
+    margin-top: 30px;
+    border: solid 1px #306EFF;
+    h4 {
+        margin: 0px;
+    }
+    .e2e-interpolated {
+        margin: 10px 0px 10px 0px;
+        font-size: 16px;
+    }
+}
