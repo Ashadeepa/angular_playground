@@ -1,0 +1,69 @@
+.video-chat-wrapper {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+
+  h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: #007bff;
+  }
+
+  h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .videos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    span {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+
+      video {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: darken(#007bff, 10%);
+    }
+
+    &:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+  }
+
+  input {
+    padding: 0.6rem;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+}
+
