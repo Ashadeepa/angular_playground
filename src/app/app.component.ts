@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {VideoChatAppComponent} from "./webrtc-demo/video-chat-app/video-chat-app.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, VideoChatAppComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
