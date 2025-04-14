@@ -18,7 +18,7 @@ private pc!: RTCPeerConnection;
 private localStream!: MediaStream;
 private remoteStream!: MediaStream;
 
-private firebaseConfig = {// Your Firebase configuration };
+private firebaseConfig = {}; 
 
 private app = initializeApp(this.firebaseConfig);
 private firestore = getFirestore(this.app);
