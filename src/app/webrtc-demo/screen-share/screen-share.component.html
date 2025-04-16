@@ -1,0 +1,18 @@
+<div class="screen-share-container">
+  <div class="video-row">
+    <div class="video-section">
+      <video #screenVideo autoplay playsinline></video>
+      <button (click)="toggleScreenShare()">Share My Screen</button>
+    </div>
+
+    <div class="video-section">
+      <video #userVideo autoplay playsinline></video>
+      <button (click)="startUserMedia()">Start Camera & Mic</button>
+    </div>
+  </div>
+
+  <div class="voice-to-text-section">
+    <h3>Voice to Text</h3>
+    <div #voiceToText class="voice-to-text"></div>
+  </div>
+</div>
