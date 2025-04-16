@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {VideoChatAppComponent} from "./webrtc-demo/video-chat-app/video-chat-app.component";
 import {WebrtcTasksComponent} from "./webrtc-demo/webrtc-tasks/webrtc-tasks.component";
+import {ScreenShareComponent} from "./webrtc-demo/screen-share/screen-share.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, VideoChatAppComponent, WebrtcTasksComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, VideoChatAppComponent, WebrtcTasksComponent, ScreenShareComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
