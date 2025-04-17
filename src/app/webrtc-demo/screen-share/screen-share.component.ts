@@ -24,10 +24,6 @@ export class ScreenShareComponent {
 
   private async startSharing() {
     try {
-      console.debug('Requesting display media...');
-      this.displayStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
-      console.debug('Display media stream obtained:', this.displayStream);
-
       this.screenVideo.nativeElement.srcObject = this.displayStream;
       console.debug('Display stream set to video element.');
 
@@ -52,15 +48,6 @@ export class ScreenShareComponent {
   async startUserMedia() {
     try {
       console.debug('Requesting user media (camera and mic)...');
-      this.userMediaStream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-        },
-      });
-      console.debug('User media stream obtained:', this.userMediaStream);
-
       this.userVideo.nativeElement.srcObject = this.userMediaStream;
       console.debug('User media stream set to video element.');
 
