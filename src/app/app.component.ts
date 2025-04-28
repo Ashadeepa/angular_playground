@@ -4,10 +4,11 @@ import {ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet} from
 import {VideoChatAppComponent} from "./webrtc-demo/video-chat-app/video-chat-app.component";
 import {WebrtcTasksComponent} from "./webrtc-demo/webrtc-tasks/webrtc-tasks.component";
 import {ScreenShareComponent} from "./webrtc-demo/screen-share/screen-share.component";
+import {AppPwaComponent} from "./app-pwa/app-pwa.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, VideoChatAppComponent, WebrtcTasksComponent, ScreenShareComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, VideoChatAppComponent, WebrtcTasksComponent, ScreenShareComponent, AppPwaComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
