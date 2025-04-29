@@ -1,1 +1,9 @@
-<p>app-pwa works!</p>
+
+<div style="display: flex; justify-content: center; align-items: center; padding-top: 10px;">
+  <button (click)="toggleImageVisibility()">
+    {{ isImageVisible ? 'Hide Image' : 'Show Image' }}
+  </button>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; padding-top: 20px;">
+  <img *ngIf="isImageVisible" src="assets/homepage.jpg" data-src="assets/homepage.jpg" class="progressive-image" alt="Progressive Image">
+</div>
