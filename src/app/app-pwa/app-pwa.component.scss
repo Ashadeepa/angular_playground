@@ -1,0 +1,17 @@
+.image-container {
+  position: relative;
+width: 100%;
+ max-width: 600px;
+   margin: auto;
+}
+.image-container img {
+width: 100%;
+  display: block;
+}
+.placeholder {
+  filter: blur(20px);
+  transition: opacity 0.5s ease;
+}
+.loaded {
+  opacity: 0;
+}

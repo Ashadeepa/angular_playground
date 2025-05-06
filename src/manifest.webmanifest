@@ -54,6 +54,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
+    },
+    {
+      "src": "assets/homepage.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg",
+      "purpose": "maskable any"
     }
   ]
 }
