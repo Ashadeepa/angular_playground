@@ -15,7 +15,7 @@ export class AppPwaComponent implements OnInit {
   isImageVisible = false;
   isOnline = navigator.onLine;
   posts: any[] = [];
-
+  users: any[] = [];
   constructor(private apiService: ApiService) {}
 
   @HostListener('window:online', ['$event'])
@@ -51,29 +51,31 @@ export class AppPwaComponent implements OnInit {
 
   ngOnInit() {
     this.fetchPosts();
+    this.fetchUsers();
+
   }
 
 
   fetchPosts() {
     this.apiService.getPosts().subscribe(
+
       (data) => {
           this.posts = data;
       },
       (error) => {
         console.error('Error fetching posts:', error);
             // Attempt to load cached data
-    caches.open('api-cache').then((cache) => {
-      cache.match('https://jsonplaceholder.typicode.com/posts').then((response) => {
-        if (response) {
-          response.json().then((cachedData) => {
-            this.posts = cachedData;
+          caches.open('api-cache').then((cache) => {
+            cache.match('https://jsonplaceholder.typicode.com/posts').then((response) => {
+              if (response) {
+                response.json().then((cachedData) => {
+                  this.posts = cachedData;
+                });
+              } else {
+                alert('No cached data available.');
+              }
+            });
           });
-        } else {
-          alert('No cached data available.');
-        }
-      });
-    });
-
       }
     );
   }
@@ -81,5 +83,22 @@ export class AppPwaComponent implements OnInit {
   refreshPosts(){
     this.fetchPosts();
   }
+
+  refreshUsers(){
+    this.fetchUsers();
+
+  }
+
+  fetchUsers() {
+    this.apiService.getUsers().subscribe(
+
+      (data) => {
+          this.users = data;
+      },
+      (error) => {
+        console.error('Error fetching posts:', error);
+        this.users = []; // Clear users on error
+      }
+    );  }
 
 }

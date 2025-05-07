@@ -19,7 +19,9 @@ const httpOptions = {
 
 @Injectable()
 export class ApiService {
-  private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private fetchPostsApiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private fetchUsersApiUrl = 'https://jsonplaceholder.typicode.com/users';
+
   constructor(
     private http: HttpClient,
   ) {}
@@ -35,7 +37,12 @@ export class ApiService {
 
   getPosts(): Observable<any> {
 
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.fetchPostsApiUrl);
+  }
+
+  getUsers(): Observable<any> {
+    return this.http.get(this.fetchUsersApiUrl);
+
   }
 
 }

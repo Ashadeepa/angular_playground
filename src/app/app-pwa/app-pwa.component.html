@@ -16,9 +16,17 @@
 <h2>Posts</h2>
 <button (click)="refreshPosts()"> Refresh posts </button>
   <ul>
-    <li *ngFor="let post of posts | slice:0:10">
+    <li *ngFor="let post of posts | slice:0:3">
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
     </li>
   </ul>
 
+<h3> Users </h3>
+<button (click)="refreshUsers()"> Refresh Users </button>
+<ul>
+  <li *ngFor="let user of users | slice:0:3">
+    <h3>{{ user.name }}</h3>
+    <p>From - {{ user.city }}</p>
+  </li>
+</ul>
