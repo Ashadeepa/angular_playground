@@ -1,15 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../services/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-pwa',
   standalone: true,
-  imports: [CommonModule], // Import CommonModule to use *ngIf
+  imports: [CommonModule, HttpClientModule], // Import CommonModule to use *ngIf
   templateUrl: './app-pwa.component.html',
-  styleUrls: ['./app-pwa.component.scss']
+  styleUrls: ['./app-pwa.component.scss'],
+  providers: [ApiService] // Provide ApiService here
 })
-export class AppPwaComponent {
+export class AppPwaComponent implements OnInit {
   isImageVisible = false;
+  isOnline = navigator.onLine;
+  posts: any[] = [];
+
+  constructor(private apiService: ApiService) {}
+
+  @HostListener('window:online', ['$event'])
+  onOnline() {
+    this.isOnline = true;
+    alert('You are back online!');
+  }
+
+  @HostListener('window:offline', ['$event'])
+  onOffline() {
+    this.isOnline = false;
+    alert('You are offline. Some features may not work.');
+  }
+
 
   ngAfterViewInit() {
     const images = document.querySelectorAll('.progressive-image');
@@ -28,4 +48,38 @@ export class AppPwaComponent {
   toggleImageVisibility() {
     this.isImageVisible = !this.isImageVisible;
   }
+
+  ngOnInit() {
+    this.fetchPosts();
+  }
+
+
+  fetchPosts() {
+    this.apiService.getPosts().subscribe(
+      (data) => {
+          this.posts = data;
+      },
+      (error) => {
+        console.error('Error fetching posts:', error);
+            // Attempt to load cached data
+    caches.open('api-cache').then((cache) => {
+      cache.match('https://jsonplaceholder.typicode.com/posts').then((response) => {
+        if (response) {
+          response.json().then((cachedData) => {
+            this.posts = cachedData;
+          });
+        } else {
+          alert('No cached data available.');
+        }
+      });
+    });
+
+      }
+    );
+  }
+
+  refreshPosts(){
+    this.fetchPosts();
+  }
+
 }

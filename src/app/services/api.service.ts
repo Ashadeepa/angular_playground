@@ -19,7 +19,7 @@ const httpOptions = {
 
 @Injectable()
 export class ApiService {
-
+  private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
   constructor(
     private http: HttpClient,
   ) {}
@@ -32,4 +32,10 @@ export class ApiService {
     return this.http.get(`${API_URL}${path}`, httpOptions)
       .pipe(catchError(this.formatErrors));
   }
+
+  getPosts(): Observable<any> {
+
+    return this.http.get(this.apiUrl);
+  }
+
 }

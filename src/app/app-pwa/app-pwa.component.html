@@ -7,3 +7,18 @@
 <div style="display: flex; justify-content: center; align-items: center; padding-top: 20px;">
   <img *ngIf="isImageVisible" src="assets/homepage.jpg" data-src="assets/homepage.jpg" class="progressive-image" alt="Progressive Image">
 </div>
+
+<p *ngIf="isOnline; else offlineTemplate">You are online!</p>
+<ng-template #offlineTemplate>
+  <p>You are offline. Some features may not work.</p>
+</ng-template>
+
+<h2>Posts</h2>
+<button (click)="refreshPosts()"> Refresh posts </button>
+  <ul>
+    <li *ngFor="let post of posts | slice:0:10">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.body }}</p>
+    </li>
+  </ul>
+

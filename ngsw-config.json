@@ -27,5 +27,20 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-cache",
+      "urls": [
+        "https://jsonplaceholder.typicode.com/posts"
+      ],
+      "cacheConfig": {
+        "maxSize": 50,
+        "maxAge": "1d",
+        "timeout": "10s",
+        "strategy": "freshness"
+      }
+    }
   ]
+
 }

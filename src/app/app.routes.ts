@@ -19,6 +19,7 @@ import { AnimalClassifierComponent } from './animal-classifier/animal-classifier
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
 import { InnerHtmlBindingComponentComponent } from './inner-html-binding-component/inner-html-binding-component.component';
 import { BypassSecurityComponentComponent } from './bypass-security-component/bypass-security-component.component';
+import { AppPwaComponent } from './app-pwa/app-pwa.component';
 
 export let routes: Routes;
 // @ts-ignore
@@ -102,5 +103,9 @@ routes = [
   {
     path: 'bypass-security',
     component: BypassSecurityComponentComponent
+  },
+  {
+    path: 'pwa',
+    component: AppPwaComponent
   }
 ];
