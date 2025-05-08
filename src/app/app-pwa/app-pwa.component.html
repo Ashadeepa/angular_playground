@@ -1,13 +1,4 @@
 
-<div style="display: flex; justify-content: center; align-items: center; padding-top: 10px;">
-  <button (click)="toggleImageVisibility()">
-    {{ isImageVisible ? 'Hide Image' : 'Show Image' }}
-  </button>
-</div>
-<div style="display: flex; justify-content: center; align-items: center; padding-top: 20px;">
-  <img *ngIf="isImageVisible" src="assets/homepage.jpg" data-src="assets/homepage.jpg" class="progressive-image" alt="Progressive Image">
-</div>
-
 <p *ngIf="isOnline; else offlineTemplate" class="online-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
     <path d="M12 3C7.03 3 2.53 5.11 0 8.5l2.83 2.83C4.9 8.94 8.27 7 12 7s7.1 1.94 9.17 4.33L24 8.5C21.47 5.11 16.97 3 12 3zm0 6c-2.33 0-4.47.8-6.17 2.13l2.83 2.83C9.53 12.38 10.71 12 12 12s2.47.38 3.33 1.04l2.83-2.83C16.47 9.8 14.33 9 12 9zm0 6c-.83 0-1.5.67-1.5 1.5S11.17 18 12 18s1.5-.67 1.5-1.5S12.83 15 12 15z"/>
@@ -33,6 +24,16 @@
   <div class="imgContainer">
     <img [src]="imagePath?.message" alt="Random Dog Image" *ngIf="imagePath">
   </div>
+</div>
+
+
+<div style="display: flex; justify-content: center; align-items: center; padding-top: 10px;">
+  <button (click)="toggleImageVisibility()">
+    {{ isImageVisible ? 'Hide Image' : 'Show Image' }}
+  </button>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; padding-top: 20px;">
+  <img *ngIf="isImageVisible" src="assets/homepage.jpg" data-src="assets/homepage.jpg" class="progressive-image" alt="Progressive Image">
 </div>
 
 
