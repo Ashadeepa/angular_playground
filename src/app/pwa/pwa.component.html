@@ -1,0 +1,36 @@
+<p *ngIf="isOnline; else offlineTemplate" class="online-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
+    <path d="M12 3C7.03 3 2.53 5.11 0 8.5l2.83 2.83C4.9 8.94 8.27 7 12 7s7.1 1.94 9.17 4.33L24 8.5C21.47 5.11 16.97 3 12 3zm0 6c-2.33 0-4.47.8-6.17 2.13l2.83 2.83C9.53 12.38 10.71 12 12 12s2.47.38 3.33 1.04l2.83-2.83C16.47 9.8 14.33 9 12 9zm0 6c-.83 0-1.5.67-1.5 1.5S11.17 18 12 18s1.5-.67 1.5-1.5S12.83 15 12 15z"/>
+  </svg>
+</p>
+<ng-template #offlineTemplate>
+  <p class="offline-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" width="24" height="24">
+      <path d="M12 3C7.41 3 3.86 4.69 1.39 7.17L3.5 9.28C5.58 7.2 8.64 6 12 6c3.36 0 6.42 1.2 8.5 3.28l2.11-2.11C20.14 4.69 16.59 3 12 3zm0 6c-2.33 0-4.47.8-6.17 2.13l2.83 2.83C9.53 12.38 10.71 12 12 12c1.29 0 2.47.38 3.33 1.04l2.83-2.83C16.47 9.8 14.33 9 12 9zm0 6c-.83 0-1.5.67-1.5 1.5S11.17 18 12 18s1.5-.67 1.5-1.5S12.83 15 12 15zm9.19 4.19L2.81 2.81 1.39 4.22l4.26 4.26C3.58 10.07 2 11.92 2 14h2c0-1.5 1.22-2.72 2.72-2.95l1.66 1.66C7.56 13.14 7 13.99 7 15c0 1.66 1.34 3 3 3h4c.34 0 .67-.05.98-.15l3.95 3.95 1.41-1.41z"/>
+    </svg>
+  </p>
+</ng-template>
+
+<h2 class="title"> Fact About Dogs </h2>
+<div class="container">
+  <div class="factContainer">
+    <ul>
+      <li *ngFor="let dogFact of dogFacts">
+        <p> {{dogFact.attributes.body}} </p>
+      </li>
+    </ul>
+  </div>
+  <div class="imgContainer">
+    <img [src]="imagePath?.message" alt="Random Dog Image" *ngIf="imagePath">
+  </div>
+</div>
+
+
+<div style="display: flex; justify-content: center; align-items: center; padding-top: 10px;">
+  <button (click)="toggleImageVisibility()">
+    {{ isImageVisible ? 'Hide Image' : 'Show Image' }}
+  </button>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; padding-top: 20px;">
+  <img *ngIf="isImageVisible" src="assets/homepage.jpg" data-src="assets/homepage.jpg" class="progressive-image" alt="Progressive Image">
+</div>
