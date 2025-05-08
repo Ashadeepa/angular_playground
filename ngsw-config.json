@@ -11,8 +11,7 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js",
-          "/*.ts",
-          "/assets/homepage.jpg"
+          "/*.ts"
         ]
       }
     },
