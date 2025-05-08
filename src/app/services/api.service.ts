@@ -32,4 +32,12 @@ export class ApiService {
     return this.http.get(`${API_URL}${path}`, httpOptions)
       .pipe(catchError(this.formatErrors));
   }
+
+  getAboutDogFacts(): Observable<any> {
+    return this.http.get('https://dogapi.dog/api/v2/facts?limit=5');
+  }
+
+  getRandomImageForDog(): Observable<any> {
+    return this.http.get('https://dog.ceo/api/breeds/image/random');
+  }
 }
