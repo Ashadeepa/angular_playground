@@ -16,6 +16,8 @@ export class AppPwaComponent implements OnInit {
   isOnline = navigator.onLine;
   posts: any[] = [];
   users: any[] = [];
+  dogFacts: any[] = [];
+  imagePath: any;
   constructor(private apiService: ApiService) {}
 
   @HostListener('window:online', ['$event'])
@@ -50,55 +52,43 @@ export class AppPwaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchPosts();
-    this.fetchUsers();
-
+    this.getRandomDogImage();
+    setInterval(() => {
+      this.getRandomDogImage(); // Fetch a new image every 10 seconds
+    }, 10000);
+    this.getDogFacts();
   }
 
 
-  fetchPosts() {
-    this.apiService.getPosts().subscribe(
 
+
+
+
+
+
+  getDogFacts(){
+    this.apiService.getAboutDogFacts().subscribe(
       (data) => {
-          this.posts = data;
+        this.dogFacts = data.data;
+        console.log('Cat Facts:', data);
       },
       (error) => {
-        console.error('Error fetching posts:', error);
-            // Attempt to load cached data
-          caches.open('api-cache').then((cache) => {
-            cache.match('https://jsonplaceholder.typicode.com/posts').then((response) => {
-              if (response) {
-                response.json().then((cachedData) => {
-                  this.posts = cachedData;
-                });
-              } else {
-                alert('No cached data available.');
-              }
-            });
-          });
+        console.error('Error fetching cat facts:', error);
       }
     );
   }
 
-  refreshPosts(){
-    this.fetchPosts();
-  }
+  getRandomDogImage(){
+    this.apiService.getRandomImageForDog().subscribe(
+      (response) => {
+        return this.imagePath = response;
 
-  refreshUsers(){
-    this.fetchUsers();
-
-  }
-
-  fetchUsers() {
-    this.apiService.getUsers().subscribe(
-
-      (data) => {
-          this.users = data;
       },
       (error) => {
-        console.error('Error fetching posts:', error);
-        this.users = []; // Clear users on error
+        console.error('Error fetching dog Image:', error);
       }
-    );  }
+    );
+
+  }
 
 }

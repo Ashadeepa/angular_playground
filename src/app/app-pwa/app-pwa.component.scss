@@ -15,3 +15,144 @@ width: 100%;
 .loaded {
   opacity: 0;
 }
+/* Center the main container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Style for the fact container */
+.factContainer {
+  display: flex;
+  height: 275px;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.factContainer ul {
+  list-style-type: disc; /* Adds bullet points */
+  padding-left: 20px; /* Adds spacing between the bullets and text */
+  margin: 0; /* Removes default margin */
+}
+
+.factContainer li {
+  margin-bottom: 10px; /* Adds spacing between list items */
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Style for the image container */
+.imgContainer {
+  // flex: 1 1 45%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // background-color: #fff;
+  // border-radius: 8px;
+  // padding: 15px;
+  // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 275px;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgContainer img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+
+}
+
+/* Button styling */
+button {
+  background-color: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #155a9c;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 4px #1976d2;
+}
+
+/* Title styling */
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 20px;
+}
+
+/* Offline message styling */
+p {
+  font-size: 16px;
+  color: #555;
+  overflow: hidden; /* Hides the overflowing text */
+  text-overflow: ellipsis; /* Adds the ellipsis (...) */
+}
+
+p.offline {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+/* Style for the online/offline icon */
+.online-icon, .offline-icon {
+  position: fixed; /* Fixes the icon relative to the viewport */
+  top: 5px; /* Adjusts the distance from the top */
+  right: 20px; /* Adjusts the distance from the right */
+  z-index: 1000; /* Ensures the icon stays above other elements */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adds spacing between the icon and text (if any) */
+}
+
+.online-icon,.offline-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.online-icon span {
+  font-size: 14px;
+  color: #4caf50; /* Green for online */
+}
+
+.offline-icon span {
+  color: #f44336; /* Red for offline */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .factContainer,
+  .imgContainer {
+    flex: 1 1 100%;
+  }
+}

@@ -31,8 +31,8 @@
     {
       "name": "api-cache",
       "urls": [
-        "https://jsonplaceholder.typicode.com/posts"
-      ],
+        "https://dog.ceo/api/breeds/image/random",
+        "https://dogapi.dog/api/v2/facts?limit=5"      ],
       "cacheConfig": {
         "maxSize": 50,
         "maxAge": "1d",

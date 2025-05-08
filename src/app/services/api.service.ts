@@ -35,14 +35,12 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
-  getPosts(): Observable<any> {
-
-    return this.http.get(this.fetchPostsApiUrl);
+  getAboutDogFacts(): Observable<any> {
+    return this.http.get('https://dogapi.dog/api/v2/facts?limit=5');
   }
 
-  getUsers(): Observable<any> {
-    return this.http.get(this.fetchUsersApiUrl);
-
+  getRandomImageForDog(): Observable<any> {
+    return this.http.get('https://dog.ceo/api/breeds/image/random');
   }
 
 }
