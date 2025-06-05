@@ -19,6 +19,7 @@ import { AnimalClassifierComponent } from './animal-classifier/animal-classifier
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
 import { InnerHtmlBindingComponentComponent } from './inner-html-binding-component/inner-html-binding-component.component';
 import { BypassSecurityComponentComponent } from './bypass-security-component/bypass-security-component.component';
+import { ServerSideRenderComponent } from './server-side-render/server-side-render.component';
 
 export let routes: Routes;
 // @ts-ignore
@@ -94,6 +95,10 @@ routes = [
   {
     path: 'sentiment-analysis',
     component: SentimentAnalysisComponent
+  },
+  {
+    path: 'ssr',
+    component: ServerSideRenderComponent
   },
   {
     path: 'html-binding',
