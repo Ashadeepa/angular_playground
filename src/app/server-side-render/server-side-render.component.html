@@ -1,0 +1,27 @@
+
+<h1 class="title"> Fact About Dogs </h1>
+<p>Dogs are full of surprises! Chow Chows start with pink tongues that turn blue-black by 8 weeks. Puppies gain full vision after a month. They can feel jealousy, have three eyelids for eye protection, and in 2002, dogs caused more U.S. deaths than sharks did in a century.</p>
+<h2>New fact</h2>
+<div class="container">
+  <div class="factContainer">
+    @if (factLoading) {
+     <div class="spinner"></div>
+    }
+    @else{
+        <ul>
+          <li *ngFor="let dogFact of dogFacts">
+            <p> {{dogFact.attributes.body}} </p>
+          </li>
+        </ul>
+    }
+  </div>
+    <div class="imgContainer">
+         @if (imgLoading) {
+     <div class="spinner"></div>
+    }
+    @else{
+    <img [src]="imagePath?.message" alt="Random Dog Image" *ngIf="imagePath">
+}
+  </div>
+  </div>
+ 
