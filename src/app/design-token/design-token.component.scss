@@ -1,0 +1,23 @@
+
+:host {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+}
+ .heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+ }
+
+.main-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+sol-dropdown {
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+}

@@ -1,7 +1,10 @@
-// .container {
-//   max-width: 1100px;
-//   margin: 0 auto 100px;
-// }
+
+@use 'sass:meta';
+
+@include meta.load-css('../../node_modules/@niceltd/cxone-components/assets/styles/typography');
+@include meta.load-css('../../node_modules/@niceltd/sol/src/styles/typefaces');
+@import '../../node_modules/@niceltd/sol/src/styles/sol-core';
+
 
 @media (max-width: 500px) {
   .container {

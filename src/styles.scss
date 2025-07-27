@@ -2,3 +2,50 @@
 body{
     margin: 0px;
 }
+
+.button {
+  background-color: var(--color-button-primary-normal);
+  color: var(--color-surface-secondary); // COLOR TOKEN
+  padding: var(--gap4);
+  font-size: var(--typography-opensans-body-buttonsmall-font-size);
+  border-radius: var(--radii-small-allcorners);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 2.25rem;
+  min-width: 4.5rem;
+  
+  &:hover {
+    background-color: var(--color-button-primary-hover);
+  }
+
+  &:active {
+    background-color: var(--color-button-primary-pressed);
+  }
+}
+
+
+.buttonRevised {
+   appearance: none;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    border-radius: var(--radii-small-allcorners);
+    font-family: var(--typography-opensans-body-buttonnormal-font-family);
+    font-weight: var(--typography-opensans-body-buttonnormal-font-weight);
+    font-size: var(--typography-opensans-body-buttonnormal-font-size);
+    line-height: var(--typography-opensans-body-buttonnormal-line-height);
+    text-align: center;
+    cursor: pointer;
+    padding: .5rem .938rem;
+    background: var(--color-button-destructive-normal);
+    color: var(--color-button-text-normal);
+    height: 2.25rem;
+    min-width: 4.5rem;
+    border-width: var(--border-size1);
+    border-style: solid;
+    border-color: var(--color-button-destructive-normal);
+    white-space: nowrap;
+}
