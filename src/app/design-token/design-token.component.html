@@ -1,22 +1,32 @@
 <header>
   <h1 class="heading">Design token </h1>
 </header>
-    <hr>
+<hr>
 <div class="main-container">
 
   <div class="left-section">
 
-    <h3>Native Button</h3>
+    <h3>Native Button without token</h3>
+    <button class="button-native">Button Text</button>
+    <br> <br>
+    <button class="button-native">Button Text 1 </button>
+
+  </div>
+
+  <div class="middle-section">
+    <h3>Native Button with token</h3>
     <button class="button">Button Text</button>
     <br> <br>
     <button class="button">Button Text 1 </button>
 
   </div>
 
+
   <div class="right-section">
 
-    
+    <h3>Single Source of Truth</h3>
     <h3>Basic</h3>
+
     <main>
       <div style="display: flex;padding: 24px; align-items: center; column-gap: 10px;">
         <sol-button [variant]="'basic'" [size]="'large'">
