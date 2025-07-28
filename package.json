@@ -9,7 +9,8 @@
     "test": "ng test --browsers ChromeHeadless",
     "storybook": "ng run Angular17:storybook",
     "build-storybook": "ng run Angular17:build-storybook",
-    "playwright": "npx playwright install chromium && npx playwright test playwright-example.spec.ts --debug"
+    "playwright": "npx playwright install chromium && npx playwright test playwright-example.spec.ts --debug",
+    "postinstall": "powershell -Command \"(Get-Content node_modules/@niceltd/sol/src/styles/tooltip.scss) -replace '~tippy.js/dist/tippy', 'tippy.js/dist/tippy' | Set-Content node_modules/@niceltd/sol/src/styles/tooltip.scss\""
   },
   "private": true,
   "dependencies": {
