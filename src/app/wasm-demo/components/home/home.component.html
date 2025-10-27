@@ -1,0 +1,104 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>WebAssembly Demonstrations</h1>
+        <p class="hero-subtitle">
+          Explore the power of WebAssembly through real-world examples comparing 
+          performance with JavaScript and showcasing advanced capabilities.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">10x</span>
+            <span class="stat-label">Faster Execution</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Native Performance</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Programming Languages</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2>Interactive Demonstrations</h2>
+      <div class="features-grid">
+        <div class="feature-card" *ngFor="let feature of features">
+          <div class="feature-icon">{{ feature.icon }}</div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+          <ul class="feature-highlights">
+            <li *ngFor="let highlight of feature.highlights">{{ highlight }}</li>
+          </ul>
+          <a [routerLink]="feature.route" class="feature-button">
+            Try Demo
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits">
+    <div class="container">
+      <h2>Why WebAssembly?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item" *ngFor="let benefit of wasmBenefits">
+          <h4>{{ benefit.title }}</h4>
+          <p>{{ benefit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack">
+    <div class="container">
+      <h2>Technologies Used</h2>
+      <div class="tech-items">
+        <div class="tech-item">
+          <div class="tech-logo">🔧</div>
+          <span>AssemblyScript</span>
+        </div>
+        <div class="tech-item">
+          <div class="tech-logo">⚡</div>
+          <span>WebAssembly</span>
+        </div>
+        <div class="tech-item">
+          <div class="tech-logo">🅰️</div>
+          <span>Angular 17</span>
+        </div>
+        <div class="tech-item">
+          <div class="tech-logo">🧠</div>
+          <span>TensorFlow.js</span>
+        </div>
+        <div class="tech-item">
+          <div class="tech-logo">💎</div>
+          <span>TypeScript</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Explore?</h2>
+      <p>Start with any demonstration to see WebAssembly in action</p>
+      <div class="cta-buttons">
+        <a routerLink="/wasm-demo/matrix" class="cta-button primary">Matrix Demo</a>
+        <a routerLink="/wasm-demo/image" class="cta-button secondary">Image Processing</a>
+        <a routerLink="/wasm-demo/tensorflow" class="cta-button secondary">ML Recognition</a>
+      </div>
+    </div>
+  </section>
+</div>

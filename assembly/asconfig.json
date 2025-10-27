@@ -1,0 +1,21 @@
+{
+  "extends": "assemblyscript/std/assembly.json",
+  "targets": {
+    "debug": {
+      "outDir": "build/debug",
+      "textFile": "build/debug/matrix.wat",
+      "sourceMap": true,
+      "debug": true
+    },
+    "release": {
+      "outDir": "build/release", 
+      "textFile": "build/release/matrix.wat",
+      "sourceMap": false,
+      "optimizeLevel": 3,
+      "shrinkLevel": 0,
+      "converge": false,
+      "noAssert": false
+    }
+  },
+  "options": {}
+}

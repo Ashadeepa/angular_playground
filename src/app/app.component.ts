@@ -6,10 +6,11 @@ import {WebrtcTasksComponent} from "./webrtc-demo/webrtc-tasks/webrtc-tasks.comp
 import {ScreenShareComponent} from "./webrtc-demo/screen-share/screen-share.component";
 import {PwaComponent} from "./pwa/pwa.component";
 import { ServerSideRenderComponent } from './server-side-render/server-side-render.component';
+import { HeaderComponent } from './wasm-demo/components/header/header.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, VideoChatAppComponent, WebrtcTasksComponent, ScreenShareComponent, PwaComponent, ServerSideRenderComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, VideoChatAppComponent, WebrtcTasksComponent, ScreenShareComponent, PwaComponent, ServerSideRenderComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

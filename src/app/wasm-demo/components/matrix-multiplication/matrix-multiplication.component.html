@@ -1,0 +1,345 @@
+<div class="matrix-container">
+  <!-- Header -->
+  <div class="header">
+    <h1>Matrix Multiplication Performance</h1>
+    <p>Compare WebAssembly vs JavaScript performance for matrix operations</p>
+  </div>
+
+  <!-- Error Display -->
+  <div class="error-message" *ngIf="error">
+    <div class="alert alert-error">
+      <strong>Error:</strong> {{ error }}
+    </div>
+  </div>
+
+  <!-- WASM Loading Status -->
+  <div class="loading-status" *ngIf="!wasmLoaded && !error">
+    <div class="alert alert-info">
+      <span class="spinner"></span>
+      Loading WebAssembly module...
+    </div>
+  </div>
+
+  <!-- Configuration Panel -->
+  <div class="config-panel" *ngIf="wasmLoaded">
+    <h3>Benchmark Configuration</h3>
+    <div class="config-grid">
+      <div class="config-item">
+        <label for="matrixSize">Matrix Size</label>
+        <select 
+          id="matrixSize"
+          [(ngModel)]="matrixSize" 
+          (change)="onMatrixSizeChange()"
+          [disabled]="isRunning"
+          class="matrix-size-dropdown"
+        >
+          <option *ngFor="let option of matrixSizeOptions" [value]="option.value">
+            {{ option.label }} - {{ option.description }}
+          </option>
+        </select>
+        
+        <!-- Matrix Multiplication Preview -->
+        <div class="multiplication-preview" *ngIf="matrixSize">
+          <div class="preview-equation">
+            <span class="matrix-dimension">{{ matrixSize }}×{{ matrixSize }}</span>
+            <span class="operator">×</span>
+            <span class="matrix-dimension">{{ matrixSize }}×{{ matrixSize }}</span>
+            <span class="operator">=</span>
+            <span class="matrix-dimension result">{{ matrixSize }}×{{ matrixSize }}</span>
+          </div>
+          <div class="complexity-info">
+            <small>{{ getMatrixMultiplicationDescription() }}</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="config-item">
+        <label for="iterations">Iterations</label>
+        <input 
+          id="iterations"
+          type="number" 
+          [(ngModel)]="iterations" 
+          min="1" 
+          max="100"
+          [disabled]="isRunning"
+        >
+        <small class="iterations-info">Multiple runs provide reliable averages</small>
+      </div>
+      
+      <div class="config-item">
+        <button 
+          class="run-benchmark-btn"
+          (click)="runBenchmark()" 
+          [disabled]="isRunning || !wasmLoaded"
+        >
+          <span *ngIf="!isRunning">🚀 Run Benchmark</span>
+          <span *ngIf="isRunning">
+            <span class="spinner small"></span>
+            Running... ({{ currentProgress }}%)
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Understanding Matrix Multiplication -->
+  <div class="educational-section" *ngIf="wasmLoaded">
+    <h3>🔢 Understanding Matrix Multiplication</h3>
+    
+    <!-- Matrix Multiplication Explanation -->
+    <div class="explanation-card">
+      <div class="explanation-header" (click)="toggleMatrixExplanation()">
+        <h4>How Matrix Multiplication Works</h4>
+        <span class="toggle-icon" [class.rotated]="showMatrixExplanation">▼</span>
+      </div>
+      <div class="explanation-content" *ngIf="showMatrixExplanation">
+        <p>Matrix multiplication is a fundamental operation where each element is calculated by the <strong>dot product</strong> of corresponding row and column.</p>
+        
+        <div class="matrix-formula">
+          <h5>Mathematical Formula:</h5>
+          <div class="formula-box">
+            <div class="matrix-eq">
+              <span class="matrix">
+                [a₁₁ a₁₂]<br>
+                [a₂₁ a₂₂]
+              </span>
+              <span class="operator">×</span>
+              <span class="matrix">
+                [b₁₁ b₁₂]<br>
+                [b₂₁ b₂₂]
+              </span>
+              <span class="operator">=</span>
+              <span class="matrix">
+                [c₁₁ c₁₂]<br>
+                [c₂₁ c₂₂]
+              </span>
+            </div>
+          </div>
+          
+          <div class="calculation-steps">
+            <h6>Where each element is calculated as:</h6>
+            <div class="step">c₁₁ = a₁₁×b₁₁ + a₁₂×b₂₁</div>
+            <div class="step">c₁₂ = a₁₁×b₁₂ + a₁₂×b₂₂</div>
+            <div class="step">c₂₁ = a₂₁×b₁₁ + a₂₂×b₂₁</div>
+            <div class="step">c₂₂ = a₂₁×b₁₂ + a₂₂×b₂₂</div>
+          </div>
+        </div>
+        
+        <div class="complexity-info">
+          <h5>Computational Complexity:</h5>
+          <div class="complexity-grid">
+            <div class="complexity-item">
+              <strong>Time Complexity:</strong> O(n³)
+              <small>For n×n matrices, requires n³ multiplications</small>
+            </div>
+            <div class="complexity-item">
+              <strong>{{ matrixSize }}×{{ matrixSize }} matrices:</strong> {{ (matrixSize * matrixSize * matrixSize).toLocaleString() }} operations
+              <small>Each operation involves floating-point multiplication and addition</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Understanding Benchmarking -->
+  <div class="educational-section" *ngIf="wasmLoaded">
+    <h3>📊 Understanding Benchmarking</h3>
+    
+    <!-- Iterations Explanation -->
+    <div class="explanation-card">
+      <div class="explanation-header" (click)="toggleIterationExplanation()">
+        <h4>🔄 Why Multiple Iterations?</h4>
+        <span class="toggle-icon" [class.rotated]="showIterationExplanation">▼</span>
+      </div>
+      <div class="explanation-content" *ngIf="showIterationExplanation">
+        <p><strong>Iterations</strong> are repeated executions of the same operation to get reliable performance measurements.</p>
+        
+        <div class="iteration-example">
+          <h5>Why {{ iterations }} iterations?</h5>
+          <div class="example-grid">
+            <div class="single-run">
+              <h6>❌ Single Run (Unreliable)</h6>
+              <div class="result-box unreliable">
+                Matrix multiplication: <strong>87ms</strong>
+                <small>Could be affected by: CPU spikes, garbage collection, background processes</small>
+              </div>
+            </div>
+            
+            <div class="multiple-runs">
+              <h6>✅ Multiple Runs (Reliable)</h6>
+              <div class="result-box reliable">
+                <div class="iteration-list">
+                  <div>Run 1: 87ms</div>
+                  <div>Run 2: 45ms</div>
+                  <div>Run 3: 48ms</div>
+                  <div>Run 4: 46ms</div>
+                  <div>Run 5: 47ms</div>
+                </div>
+                <strong>Average: 54.6ms ± 15.2ms</strong>
+                <small>More reliable measurement!</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="iteration-benefits">
+          <h5>Benefits of Multiple Iterations:</h5>
+          <ul>
+            <li><strong>Eliminates Noise:</strong> Random system variations are averaged out</li>
+            <li><strong>Accounts for Warm-up:</strong> First runs are often slower due to cold caches</li>
+            <li><strong>Statistical Validity:</strong> Provides standard deviation and confidence</li>
+            <li><strong>JIT Optimization:</strong> JavaScript engines optimize hot code paths</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Memory & Performance section removed per user request -->
+
+  <!-- Matrix Visualization (for small matrices) -->
+  <div class="matrix-visualization" *ngIf="showMatrices && (matrixA.length > 0 || resultMatrix.length > 0)">
+    <h3>Matrix Visualization</h3>
+    <div class="matrices-display">
+      <div class="matrix-section">
+        <h4>Matrix A</h4>
+        <div class="matrix" *ngIf="matrixA.length > 0">
+          <div class="matrix-row" *ngFor="let row of matrixA">
+            <span class="matrix-cell" *ngFor="let cell of row">{{ cell }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="multiply-symbol">×</div>
+      
+      <div class="matrix-section">
+        <h4>Matrix B</h4>
+        <div class="matrix" *ngIf="matrixB.length > 0">
+          <div class="matrix-row" *ngFor="let row of matrixB">
+            <span class="matrix-cell" *ngFor="let cell of row">{{ cell }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="equals-symbol">=</div>
+      
+      <div class="matrix-section">
+        <h4>Result</h4>
+        <div class="matrix result-matrix" *ngIf="resultMatrix.length > 0">
+          <div class="matrix-row" *ngFor="let row of resultMatrix">
+            <span class="matrix-cell" *ngFor="let cell of row">{{ cell | number:'1.1-1' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Calculation Steps -->
+    <div class="calculation-steps" *ngIf="matrixCalculationSteps.length > 0">
+      <h4>Step-by-step Calculation</h4>
+      <div class="steps-list">
+        <div class="calculation-step" *ngFor="let step of matrixCalculationSteps">
+          {{ step }}
+        </div>
+      </div>
+      <p class="steps-note">
+        <small>Showing calculation for first few elements. Each element requires {{ matrixA.length }} multiplications and additions.</small>
+      </p>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container" *ngIf="isRunning">
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="currentProgress"></div>
+    </div>
+    <p class="progress-text">Running benchmark... {{ currentProgress }}%</p>
+  </div>
+
+  <!-- Results Display -->
+  <div class="results-container" *ngIf="benchmarkResult && !isRunning">
+    <h3>Performance Results</h3>
+    
+    <!-- Speedup Summary -->
+    <div class="speedup-summary">
+      <div class="speedup-card" [class]="getPerformanceClass(benchmarkResult.winner, 'webassembly')">
+        <h4>{{ getSpeedupText() }}</h4>
+        <p>{{ matrixSize }}x{{ matrixSize }} matrices, {{ iterations }} iterations</p>
+      </div>
+    </div>
+
+    <!-- Detailed Results -->
+    <div class="results-grid">
+      <!-- JavaScript Results -->
+      <div class="result-card" [class]="getPerformanceClass(benchmarkResult.winner, 'javascript')">
+        <div class="result-header">
+          <h4>🟨 JavaScript</h4>
+          <span class="winner-badge" *ngIf="benchmarkResult.winner === 'javascript'">Winner!</span>
+        </div>
+        <div class="result-stats">
+          <div class="stat">
+            <span class="stat-label">Duration:</span>
+            <span class="stat-value">{{ performanceService.formatDuration(benchmarkResult.javascript.duration) }}</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Performance:</span>
+            <span class="stat-value">{{ performanceService.formatOperationsPerSecond(benchmarkResult.javascript.operationsPerSecond) }}</span>
+          </div>
+          <div class="stat" *ngIf="benchmarkResult.javascript.memoryUsed">
+            <span class="stat-label">Memory:</span>
+            <span class="stat-value">{{ performanceService.formatMemory(benchmarkResult.javascript.memoryUsed) }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WebAssembly Results -->
+      <div class="result-card" [class]="getPerformanceClass(benchmarkResult.winner, 'webassembly')">
+        <div class="result-header">
+          <h4>⚡ WebAssembly</h4>
+          <span class="winner-badge" *ngIf="benchmarkResult.winner === 'webassembly'">Winner!</span>
+        </div>
+        <div class="result-stats">
+          <div class="stat">
+            <span class="stat-label">Duration:</span>
+            <span class="stat-value">{{ performanceService.formatDuration(benchmarkResult.webassembly.duration) }}</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Performance:</span>
+            <span class="stat-value">{{ performanceService.formatOperationsPerSecond(benchmarkResult.webassembly.operationsPerSecond) }}</span>
+          </div>
+          <div class="stat" *ngIf="benchmarkResult.webassembly.memoryUsed">
+            <span class="stat-label">Memory:</span>
+            <span class="stat-value">{{ performanceService.formatMemory(benchmarkResult.webassembly.memoryUsed) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Analysis -->
+    <div class="analysis-section">
+      <h4>🔍 Why {{ benchmarkResult.winner === 'webassembly' ? 'WebAssembly' : 'JavaScript' }} Won</h4>
+      <div class="analysis-content">
+        <pre class="performance-explanation">{{ performanceAnalysis }}</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Information Panel -->
+  <div class="info-panel">
+    <h4>About This Benchmark</h4>
+    <p>
+      This benchmark compares the performance of matrix multiplication implemented in pure JavaScript 
+      versus WebAssembly compiled from AssemblyScript. The test measures the time taken to multiply 
+      two square matrices of the specified size for the given number of iterations.
+    </p>
+    <div class="tips">
+      <h5>Tips:</h5>
+      <ul>
+        <li>Try different matrix sizes to see how performance scales</li>
+        <li>Smaller matrices may favor JavaScript due to call overhead</li>
+        <li>Larger matrices typically show WebAssembly advantages</li>
+        <li>Multiple iterations provide more accurate averages</li>
+      </ul>
+    </div>
+  </div>
+</div>

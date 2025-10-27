@@ -1,0 +1,22 @@
+<header class="app-header">
+  <div class="container">
+    <div class="nav-brand">
+      <h1 routerLink="/wasm-demo" (click)="closeMenu()">WebAssembly Demo</h1>
+    </div>
+    
+    <nav class="nav-menu" [class.nav-menu-open]="isMenuOpen">
+      <ul>
+        <li><a routerLink="/wasm-demo" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a></li>
+        <li><a routerLink="/wasm-demo/matrix" routerLinkActive="active" (click)="closeMenu()">Matrix Multiplication</a></li>
+        <li><a routerLink="/wasm-demo/image" routerLinkActive="active" (click)="closeMenu()">Image Processing</a></li>
+        <li><a routerLink="/wasm-demo/tensorflow" routerLinkActive="active" (click)="closeMenu()">TensorFlow + WASM</a></li>
+      </ul>
+    </nav>
+    
+    <button class="nav-toggle" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen">
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+    </button>
+  </div>
+</header>
