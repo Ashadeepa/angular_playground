@@ -9,7 +9,9 @@
     "test": "ng test --browsers ChromeHeadless",
     "storybook": "ng run Angular17:storybook",
     "build-storybook": "ng run Angular17:build-storybook",
-    "playwright": "npx playwright install chromium && npx playwright test playwright-example.spec.ts --debug"
+    "playwright": "npx playwright install chromium && npx playwright test playwright-example.spec.ts --debug",
+    "asbuild:matrix": "asc assembly/matrix.ts --target release --outFile src/assets/matrix.wasm --bindings esm --exportRuntime",
+    "asbuild:image": "asc assembly/image.ts --target release --outFile src/assets/image.wasm --bindings esm --exportRuntime"
   },
   "private": true,
   "dependencies": {
@@ -22,8 +24,11 @@
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
     "@tensorflow-models/mobilenet": "^2.1.1",
+    "@tensorflow-models/universal-sentence-encoder": "^1.3.3",
     "@tensorflow/tfjs": "^4.22.0",
+    "@tensorflow/tfjs-backend-wasm": "^4.22.0",
     "@tensorflow/tfjs-vis": "latest",
+    "assemblyscript": "^0.28.9",
     "firebase": "^11.6.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

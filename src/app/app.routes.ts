@@ -24,6 +24,11 @@ export let routes: Routes;
 // @ts-ignore
 routes = [
   {
+    path: '',
+    redirectTo: '/wasm-demo',
+    pathMatch: 'full'
+  },
+  {
     path: 'apple-pie-recipe',
     loadComponent: () => AppleRecipeComponent,
   },
@@ -102,5 +107,21 @@ routes = [
   {
     path: 'bypass-security',
     component: BypassSecurityComponentComponent
+  },
+  {
+    path: 'wasm-demo',
+    loadComponent: () => import('./wasm-demo/components/home/home.component').then(m => m.HomeComponent)
+  },
+  {
+    path: 'wasm-demo/matrix',
+    loadComponent: () => import('./wasm-demo/components/matrix-multiplication/matrix-multiplication.component').then(m => m.MatrixMultiplicationComponent)
+  },
+  {
+    path: 'wasm-demo/image',
+    loadComponent: () => import('./wasm-demo/components/image-processing/image-processing.component').then(m => m.ImageProcessingComponent)
+  },
+  {
+    path: 'wasm-demo/tensorflow',
+    loadComponent: () => import('./wasm-demo/components/tensorflow/tensorflow.component').then(m => m.TensorflowComponent)
   }
 ];

@@ -1,0 +1,241 @@
+<div class="tensorflow-container">
+  <div class="header-section">
+    <h1>TensorFlow.js Text Intent Recognition</h1>
+    <p> Simple text classification using Universal Sentence Encoder with WebAssembly</p>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isModelLoading" class="loading-section">
+    <div class="loading-spinner"></div>
+    <p>Loading Universal Sentence Encoder model...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="error-section">
+    <i class="fas fa-exclamation-triangle"></i>
+    <p>{{ error }}</p>
+    <button (click)="ngOnInit()" class="retry-btn">
+      <i class="fas fa-redo"></i>
+      Retry
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <div *ngIf="!isModelLoading && !error" class="main-content">
+
+    <!-- Text Input Section -->
+    <div class="text-input-section">
+      <h3>
+        <i class="fas fa-keyboard"></i>
+        Enter Your Text for Intent Analysis
+      </h3>
+      
+      <div class="input-container">
+        <textarea 
+          [(ngModel)]="userText"
+          placeholder="Type your message here... For example: 'Hello there, how are you doing today?' or 'I would like to make a reservation for dinner tomorrow evening'"
+          class="text-input"
+          rows="4">
+        </textarea>
+      </div>
+      
+      <div class="button-section">
+        <button (click)="clear()" class="control-btn clear-btn">
+          <i class="fas fa-eraser"></i>
+          Clear Text
+        </button>
+        <button 
+          (click)="predictIntent()" 
+          [disabled]="!userText.trim()"
+          class="control-btn predict-btn">
+          <i class="fas fa-brain"></i>
+          Analyze Intent
+        </button>
+      </div>
+    </div>
+
+    <!-- Intent Prediction Results -->
+    <div *ngIf="currentPrediction" class="prediction-section">
+      <h3>
+        <i class="fas fa-bullseye"></i>
+        🎯 Intent Analysis Result
+      </h3>
+      
+      <div class="prediction-result">
+        <div class="predicted-intent">
+          <div class="intent-display">
+            <span class="intent-name">{{ currentPrediction.intent }}</span>
+          </div>
+          <div class="similarity">
+            Confidence: {{ (currentPrediction.similarity * 100).toFixed(1) }}%
+          </div>
+        </div>
+        
+        <div class="input-text">
+          <strong>Your Input:</strong> "{{ userText }}"
+        </div>
+      </div>
+    </div>
+
+    <!-- Intent Categories -->
+    <div class="demo-section">
+      <h3>
+        <i class="fas fa-magic"></i>
+        ✨ Quick Examples to Try
+      </h3>
+      <p class="demo-description">Click any example below to instantly fill the text box above:</p>
+      
+        <div class="quick-examples-grid">
+          <ng-container *ngFor="let row of [0,1,2]">
+            <div class="quick-examples-row">
+              <ng-container *ngFor="let col of [0,1,2]">
+                <ng-container *ngIf="intents[row*3+col]">
+                  <button class="quick-example-btn" (click)="userText = intents[row*3+col].examples[0]">
+                    <span class="intent-label">{{ intents[row*3+col].label }}</span>
+                    <span class="intent-example">{{ intents[row*3+col].examples[0] }}</span>
+                  </button>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="how-it-works-section">
+      <h3>
+        <i class="fas fa-cogs"></i>
+        🔬 How TensorFlow & Universal Sentence Encoder Work
+      </h3>
+      
+      <div class="technical-explanation">
+        <div class="overview-section">
+          <h4>🧠 The AI Stack Behind This Demo</h4>
+          <p>This application uses cutting-edge machine learning technologies running entirely in your browser:</p>
+        </div>
+
+        <div class="tech-stack">
+          <div class="tech-component">
+            <div class="tech-icon">🔤</div>
+            <div class="tech-content">
+              <h5>Universal Sentence Encoder (USE)</h5>
+              <p>A pre-trained neural network model from Google that converts text into high-dimensional vectors (embeddings)</p>
+            </div>
+          </div>
+          <div class="tech-component">
+            <div class="tech-icon">🧮</div>
+            <div class="tech-content">
+              <h5>TensorFlow.js</h5>
+              <p>Google's machine learning library adapted for JavaScript, enabling AI models to run in web browsers</p>
+            </div>
+          </div>
+          <div class="tech-component">
+            <div class="tech-icon">⚡</div>
+            <div class="tech-content">
+              <h5>WebAssembly (WASM)</h5>
+              <p>A binary instruction format that allows near-native performance for computationally intensive tasks</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-flow">
+          <h4>🔄 What Happens to Your Text</h4>
+          <div class="steps">
+            <div class="step">
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <h5>Text Tokenization</h5>
+                <p><strong>Input:</strong> "Hello, how are you today?"<br>
+                <strong>Process:</strong> Text is broken down into tokens and preprocessed for the neural network</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <h5>Neural Network Encoding</h5>
+                <p><strong>USE Model:</strong> Transforms text into a 512-dimensional vector (embedding)<br>
+                <strong>Output:</strong> [0.23, -0.45, 0.78, ...] (512 numbers representing semantic meaning)</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <h5>Similarity Computation</h5>
+                <p><strong>Algorithm:</strong> Cosine similarity between your text embedding and predefined intent embeddings<br>
+                <strong>Formula:</strong> similarity = (A·B) / (||A|| × ||B||)</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">4</span>
+              <div class="step-content">
+                <h5>Intent Classification</h5>
+                <p><strong>Decision:</strong> Highest similarity score determines the predicted intent<br>
+                <strong>Result:</strong> "Greeting" with 87.3% confidence</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wasm-explanation">
+          <h4>⚡ Why WebAssembly (WASM) Matters</h4>
+          <div class="wasm-benefits">
+            <div class="wasm-benefit">
+              <i class="fas fa-rocket"></i>
+              <div class="benefit-content">
+                <h5>Performance</h5>
+                <p>WASM runs at near-native speed (only 10-20% slower than C/C++), making complex tensor operations feasible in browsers</p>
+              </div>
+            </div>
+            <div class="wasm-benefit">
+              <i class="fas fa-microchip"></i>
+              <div class="benefit-content">
+                <h5>CPU Optimization</h5>
+                <p>Utilizes SIMD (Single Instruction, Multiple Data) instructions for parallel processing of neural network computations</p>
+              </div>
+            </div>
+            <div class="wasm-benefit">
+              <i class="fas fa-shield-alt"></i>
+              <div class="benefit-content">
+                <h5>Security & Privacy</h5>
+                <p>All processing happens locally in your browser - no data is sent to external servers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-insight">
+          <h4>💻 Code Implementation</h4>
+          <div class="code-blocks">
+            <div class="code-block">
+              <h5>1. WASM Backend Initialization</h5>
+              <code>
+                setWasmPaths('/assets/');<br>
+                await tf.setBackend('wasm');
+              </code>
+            </div>
+            <div class="code-block">
+              <h5>2. Text Embedding</h5>
+              <code>
+                const embedding = await model.embed([userText]);<br>
+                const vector = await embedding.array();
+              </code>
+            </div>
+            <div class="code-block">
+              <h5>3. Similarity Calculation</h5>
+              <code>
+                const similarity = dot(a,b) / (norm(a) * norm(b));<br>
+                return similarity;
+              </code>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>Technical Note:</strong> This demo loads a ~25MB Universal Sentence Encoder model and processes it using TensorFlow.js with WebAssembly backend for optimal performance without requiring GPU acceleration.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

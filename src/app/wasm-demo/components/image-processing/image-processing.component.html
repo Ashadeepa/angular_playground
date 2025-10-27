@@ -1,0 +1,219 @@
+<div class="image-processing-container">
+  <!-- Header -->
+  <div class="header">
+    <h1>Image Processing with WebAssembly</h1>
+    <p>Apply real-time image filters using WebAssembly for high-performance processing</p>
+  </div>
+
+  <!-- Error Display -->
+  <div class="error-message" *ngIf="error">
+    <div class="alert alert-error">
+      <strong>Error:</strong> {{ error }}
+    </div>
+  </div>
+
+  <!-- WASM Loading Status -->
+  <div class="loading-status" *ngIf="!wasmLoaded && !error">
+    <div class="alert alert-info">
+      <span class="spinner"></span>
+      Loading WebAssembly image processing module...
+    </div>
+  </div>
+
+  <!-- View Initialization Status -->
+  <div class="loading-status" *ngIf="wasmLoaded && !viewReady && !error">
+    <div class="alert alert-info">
+      <span class="spinner"></span>
+      Initializing canvas elements...
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" *ngIf="wasmLoaded">
+    
+    <!-- Image Processing Card -->
+    <div class="processing-card">
+      
+      <!-- Image Upload Section -->
+      <div class="upload-section" *ngIf="!originalImageData">
+        <div class="upload-content">
+          <div class="upload-icon">📁</div>
+          <h3>Choose an Image to Process</h3>
+          <p>Upload an image to apply WebAssembly-powered filters</p>
+          
+          <div class="file-upload">
+            <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" id="imageFile" [disabled]="!viewReady">
+            <label for="imageFile" class="upload-button" [class.disabled]="!viewReady">
+              Choose Image File
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Comparison Section -->
+      <div class="image-comparison" *ngIf="originalImageData">
+        <div class="image-panel">
+          <h4>Original Image</h4>
+          <div class="canvas-container">
+            <canvas class="image-canvas"></canvas>
+          </div>
+        </div>
+        
+        <div class="arrow-separator">→</div>
+        
+        <div class="image-panel">
+          <h4>Processed Image</h4>
+          <div class="canvas-container">
+            <canvas class="image-canvas"></canvas>
+          </div>
+          <div class="processing-overlay" *ngIf="isProcessing">
+            <div class="spinner"></div>
+            <span>Processing...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons" *ngIf="originalImageData">
+        <button class="action-btn reset-btn" (click)="resetImage()" [disabled]="!processedImageData || isProcessing">
+          🔄 Reset to Original
+        </button>
+        
+        <button class="action-btn download-btn" (click)="downloadProcessedImage()" [disabled]="!processedImageData || isProcessing">
+          💾 Download Result
+        </button>
+        
+        <button class="action-btn upload-new-btn" (click)="resetToUpload()" [disabled]="isProcessing">
+          📁 Upload New Image
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter Controls Card -->
+    <div class="filter-controls-card" *ngIf="originalImageData">
+      <h3>Image Filters</h3>
+      
+      <!-- Filter Parameters - Move above effects -->
+      <div class="filter-parameters" *ngIf="currentFilterConfig.hasParameters">
+        <h4>Filter Settings</h4>
+        <div class="parameter-control" *ngFor="let param of getParameterKeys()">
+          <label [for]="param">{{ param | titlecase }}:</label>
+          <div class="slider-container">
+            <input 
+              [id]="param"
+              type="range" 
+              [(ngModel)]="currentFilterConfig.parameters![param]"
+              [min]="currentFilterConfig.parameterRanges![param].min"
+              [max]="currentFilterConfig.parameterRanges![param].max"
+              [step]="currentFilterConfig.parameterRanges![param].step"
+              (input)="onParameterChange()"
+              class="parameter-slider"
+            >
+            <span class="parameter-value">{{ currentFilterConfig.parameters![param] }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Effects in one horizontal line -->
+      <div class="effects-row">
+        <div 
+          *ngFor="let filter of availableFilters" 
+          class="filter-option"
+          [class.active]="selectedFilter === filter.name"
+          (click)="selectFilter(filter.name)"
+        >
+          <div class="filter-icon">🎨</div>
+          <div class="filter-name">{{ filter.displayName }}</div>
+          <div class="filter-description">
+            {{ filter.description }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How it Works Section -->
+    <div class="how-it-works-card">
+      <h3>🔧 How WebAssembly Image Processing Works</h3>
+      
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>📁 Image Upload</h4>
+            <p>User uploads image file → Drawn to HTML5 Canvas → Extracted as raw RGBA pixel data</p>
+            <code>ctx.getImageData(0, 0, width, height)</code>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>🔄 Binary Conversion</h4>
+            <p>ImageData contains Uint8ClampedArray of RGBA bytes → Each pixel = 4 bytes (Red, Green, Blue, Alpha)</p>
+            <code>const {{ '{' }}width, height, data{{ '}' }} = imageData</code>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>💾 WASM Memory Allocation</h4>
+            <p>Allocate source and destination buffers in WebAssembly linear memory</p>
+            <code>srcPtr = 1024; dstPtr = srcPtr + imageSize</code>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>⚡ Data Transfer</h4>
+            <p>Copy binary pixel data directly to WASM memory for zero-copy processing</p>
+            <code>srcArray.set(data) // Key conversion step!</code>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>🚀 WASM Processing</h4>
+            <p>WebAssembly functions process raw binary data at near-native speed</p>
+            <code>wasm.grayscale(srcPtr, width, height)</code>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <h4>🖼️ Result Display</h4>
+            <p>Convert processed binary data back to ImageData → Display on Canvas</p>
+            <code>new ImageData(resultData, width, height)</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="performance-benefits">
+        <h4>⚡ Performance Benefits</h4>
+        <div class="benefits-grid">
+          <div class="benefit">
+            <strong>Native Speed:</strong> WASM runs at 95% of native C++ performance
+          </div>
+          <div class="benefit">
+            <strong>Direct Memory:</strong> Zero-copy binary data manipulation
+          </div>
+          <div class="benefit">
+            <strong>Simple & Fast:</strong> Efficient pixel-level operations
+          </div>
+          <div class="benefit">
+            <strong>Easy to Learn:</strong> Clean code structure for education
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canvas Elements (always present for ViewChild) -->
+    <div style="position: absolute; left: -9999px; top: -9999px;">
+      <canvas #originalCanvas></canvas>
+      <canvas #processedCanvas></canvas>
+    </div>
+  </div>
+</div>
