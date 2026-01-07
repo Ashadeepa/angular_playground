@@ -19,6 +19,7 @@ import { AnimalClassifierComponent } from './animal-classifier/animal-classifier
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
 import { InnerHtmlBindingComponentComponent } from './inner-html-binding-component/inner-html-binding-component.component';
 import { BypassSecurityComponentComponent } from './bypass-security-component/bypass-security-component.component';
+import { SmsChannelDemoComponent } from './sms-channel-demo/sms-channel-demo.component';
 
 export let routes: Routes;
 // @ts-ignore
@@ -107,6 +108,10 @@ routes = [
   {
     path: 'bypass-security',
     component: BypassSecurityComponentComponent
+  },
+  {
+    path: 'sms-channel-demo',
+    component: SmsChannelDemoComponent
   },
   {
     path: 'wasm-demo',

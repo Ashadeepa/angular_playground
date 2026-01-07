@@ -1,0 +1,157 @@
+<div class="sms-channel-demo">
+  <h2>SMS Channel Demo - Attachments Without Text Support</h2>
+  
+  <div class="info-box">
+    <h3>What's New?</h3>
+    <p>
+      The API now supports sending attachments <strong>without requiring placeholder text</strong>.
+      Previously, you had to include text like "Please see attachments below" even when sending only files.
+      This is no longer necessary!
+    </p>
+  </div>
+
+  <div class="demo-section">
+    <h3>Channel Configuration</h3>
+    <div class="form-group">
+      <label for="channelId">Channel ID:</label>
+      <input 
+        id="channelId"
+        type="text" 
+        [(ngModel)]="channelId" 
+        placeholder="e.g., sms_sinch-sms_919930349978"
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h3>Message Content (Optional)</h3>
+    <div class="form-group">
+      <label for="messageContent">Text Message:</label>
+      <textarea 
+        id="messageContent"
+        [(ngModel)]="messageContent" 
+        placeholder="Enter your message (optional if attachments are provided)"
+        rows="4"
+        class="form-control"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h3>Attachments</h3>
+    <div class="attachments-list" *ngIf="attachments.length > 0">
+      <div *ngFor="let attachment of attachments; let i = index" class="attachment-item">
+        <div class="attachment-info">
+          <span class="file-name">{{ attachment.fileName }}</span>
+          <span class="file-type">{{ attachment.fileType }}</span>
+          <span class="file-size">{{ attachment.fileSize }} bytes</span>
+        </div>
+        <button (click)="removeAttachment(i)" class="btn-remove">Remove</button>
+      </div>
+    </div>
+    <div *ngIf="attachments.length === 0" class="no-attachments">
+      No attachments added
+    </div>
+    <button (click)="addSampleAttachment()" class="btn-secondary">
+      Add Sample Attachment
+    </button>
+  </div>
+
+  <div class="action-buttons">
+    <h3>Send Options</h3>
+    <div class="button-group">
+      <button 
+        (click)="sendTextOnly()" 
+        [disabled]="isSending || !messageContent.trim()"
+        class="btn-primary"
+      >
+        Send Text Only
+      </button>
+      
+      <button 
+        (click)="sendAttachmentsOnly()" 
+        [disabled]="isSending || attachments.length === 0"
+        class="btn-primary highlight"
+      >
+        Send Attachments Only (No Text!) ✨
+      </button>
+      
+      <button 
+        (click)="sendTextWithAttachments()" 
+        [disabled]="isSending"
+        class="btn-primary"
+      >
+        Send Combined (Text + Attachments)
+      </button>
+      
+      <button 
+        (click)="clearForm()" 
+        [disabled]="isSending"
+        class="btn-secondary"
+      >
+        Clear Form
+      </button>
+    </div>
+  </div>
+
+  <div class="response-section" *ngIf="lastResponse || errorMessage">
+    <div *ngIf="lastResponse" class="success-message">
+      ✓ {{ lastResponse }}
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      ✗ {{ errorMessage }}
+    </div>
+  </div>
+
+  <div class="loading-indicator" *ngIf="isSending">
+    <p>Sending message...</p>
+  </div>
+
+  <div class="documentation">
+    <h3>API Documentation</h3>
+    <p><strong>Endpoint:</strong> <code>{{ channelId ? 'https://api-de-na1.dev.niceincontact.com/dfo/3.0/channels/' + channelId + '/outbound' : 'Configure channel ID above' }}</code></p>
+    
+    <h4>Validation Rules:</h4>
+    <ul>
+      <li>Channel ID is required</li>
+      <li>Message must have either content OR attachments (or both)</li>
+      <li><strong>Text content is now optional when attachments are provided</strong></li>
+      <li>Each attachment must have: fileName, fileType, fileSize, and fileUrl</li>
+    </ul>
+    
+    <h4>Example Payloads:</h4>
+    
+    <div class="code-example">
+      <h5>1. Attachments Only (NEW - No placeholder text needed!):</h5>
+      <pre>{{ '{' }}
+  "channelId": "sms_sinch-sms_919930349978",
+  "attachments": [
+    {{ '{' }}
+      "fileName": "document.pdf",
+      "fileType": "application/pdf",
+      "fileSize": 1024,
+      "fileUrl": "https://example.com/document.pdf"
+    {{ '}' }}
+  ]
+{{ '}' }}</pre>
+    </div>
+    
+    <div class="code-example">
+      <h5>2. Text Only:</h5>
+      <pre>{{ '{' }}
+  "channelId": "sms_sinch-sms_919930349978",
+  "content": "Hello, this is a message"
+{{ '}' }}</pre>
+    </div>
+    
+    <div class="code-example">
+      <h5>3. Text with Attachments:</h5>
+      <pre>{{ '{' }}
+  "channelId": "sms_sinch-sms_919930349978",
+  "content": "Please review",
+  "attachments": [...]
+{{ '}' }}</pre>
+    </div>
+  </div>
+</div>
